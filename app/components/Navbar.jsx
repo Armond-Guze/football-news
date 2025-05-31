@@ -24,12 +24,13 @@ export default function Navbar() {
     <nav className="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 shadow-sm sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-16">
         {/* Logo */}
-        <Link
-          href="/"
-          className="text-2xl font-bold tracking-tight hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500"
-        >
-          🏈 FootballNews
-        </Link>
+      <Link href="/" className="inline-flex items-center space-x-2">
+      <img
+        src="/images/footballLogo.png"
+        alt="FootballNews Logo"
+        className="h-10 w-auto"
+      />
+    </Link>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-8">
