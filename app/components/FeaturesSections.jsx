@@ -6,14 +6,13 @@ export default function FeaturesSection() {
           <div className="lg:pt-4 lg:pr-8">
             <div className="lg:max-w-lg">
               <h2 className="text-base font-semibold leading-7 text-indigo-400">
-                Elite Performers
+                The Best in the Game
               </h2>
               <p className="mt-2 text-4xl font-semibold tracking-tight text-white sm:text-5xl">
-                The Power of NFL Quarterbacks
+                What Makes Elite QBs Unstoppable
               </p>
               <p className="mt-6 text-lg leading-8 text-slate-300">
-                NFL quarterbacks are the backbone of every offense—commanding
-                plays, leading teams, and making history every Sunday.
+                Quarterbacks like Mahomes, Burrow, and Jackson aren't just athletes—they're playmakers, leaders, and culture-setters. Here's what sets them apart from the rest.
               </p>
               <dl className="mt-10 max-w-xl space-y-8 text-base leading-7 text-slate-300 lg:max-w-none">
                 <div className="relative pl-9">
@@ -30,13 +29,13 @@ export default function FeaturesSection() {
                         clipRule="evenodd"
                       />
                     </svg>
-                    Precision passing.
+                    Patrick Mahomes' improvisation.
                   </dt>
                   <dd className="inline">
-                    From tight spirals to deep bombs, elite QBs deliver passes
-                    with pinpoint accuracy under pressure.
+                    With his no-look passes, sidearm throws, and unreal pocket awareness, Mahomes turns broken plays into highlight reels.
                   </dd>
                 </div>
+
                 <div className="relative pl-9">
                   <dt className="inline font-semibold text-white">
                     <svg
@@ -51,13 +50,13 @@ export default function FeaturesSection() {
                         clipRule="evenodd"
                       />
                     </svg>
-                    Leadership on and off the field.
+                    Joe Burrow's poise under pressure.
                   </dt>
                   <dd className="inline">
-                    Quarterbacks aren’t just players—they’re team captains,
-                    locker room leaders, and the face of the franchise.
+                    Cool, calculated, and confident—Burrow thrives in tight pockets and clutch moments, making big-time throws look routine.
                   </dd>
                 </div>
+
                 <div className="relative pl-9">
                   <dt className="inline font-semibold text-white">
                     <svg
@@ -73,11 +72,10 @@ export default function FeaturesSection() {
                         clipRule="evenodd"
                       />
                     </svg>
-                    Game-winning drives.
+                    Lamar Jackson's game-breaking speed.
                   </dt>
-                  <dd className="inline">
-                    The greatest quarterbacks shine in the clutch—executing
-                    two-minute drills and sealing comeback victories.
+                  <dd className="inline"> 
+                    In an instant, Jackson can flip the field with his legs. His ability to escape and accelerate makes him a threat from anywhere.
                   </dd>
                 </div>
               </dl>

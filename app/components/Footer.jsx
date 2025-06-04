@@ -1,59 +1,73 @@
+import Link from "next/link";
+
 const Footer = () => {
-    return (
-      <footer className="bg-gray-900 text-gray-100 py-12 mt-24">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-          {/* Contact */}
+  return (
+    <footer className="bg-gray-900 text-gray-100 py-12 mt-24 border-t border-gray-800">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+          {/* The Game Snap */}
           <div>
-            <h3 className="text-lg font-semibold mb-4 text-indigo-400">Contact</h3>
+            <h3 className="text-xl font-bold text-indigo-400 mb-4">The Game Snap</h3>
+            <p className="text-sm text-gray-400">
+              Your source for elite coverage and NFL insights.
+            </p>
+          </div>
+
+          {/* Company */}
+          <div>
+            <h4 className="text-lg font-semibold text-indigo-400 mb-3">Company</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                
-                <a href="mailto:info@footballnews.com" className="hover:text-indigo-400 transition">
+                <a
+                  href="mailto:TheGameSnap@yahoo.com"
+                  className="hover:text-indigo-400 transition"
+                >
                   TheGameSnap@yahoo.com
                 </a>
               </li>
               <li>
-                <a href="privacyPolicy" className="hover:text-indigo-400 transition">
+                <Link
+                  href="/privacypolicy"
+                  className="hover:text-indigo-400 transition"
+                >
                   Privacy Policy
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-indigo-400 transition">
+                <Link
+                  href="/contact"
+                  className="hover:text-indigo-400 transition"
+                >
                   Contact Form
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Socials */}
+          <div>
+            <h4 className="text-lg font-semibold text-indigo-400 mb-3">Follow Us</h4>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <a
+                  href="https://www.instagram.com/thegamesnap"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-indigo-400 transition"
+                >
+                  Instagram
                 </a>
               </li>
             </ul>
           </div>
-  
-          
-  
-          {/* Filler Section 2 */}
-         
-  
-          {/* Socials or Newsletter */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4 text-indigo-400">Follow Us</h3>
-            <ul className="space-y-2 text-sm">
-<li>
-  <a
-    href="https://www.instagram.com/thegamesnap"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="hover:text-indigo-400 transition"
-  >
-    Instagram
-  </a>
-</li>
-</ul>
-
-          </div>
         </div>
-  
-        <div className="mt-12 text-center text-xs text-gray-500">
+
+        <div className="mt-12 text-center text-xs text-gray-500 border-t border-gray-800 pt-6">
           &copy; {new Date().getFullYear()} The Game Snap. All rights reserved.
         </div>
-      </footer>
-    );
-  };
-  
-  export default Footer;
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;

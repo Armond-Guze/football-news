@@ -1,67 +1,79 @@
+"use client";
+
+import { useForm, ValidationError } from "@formspree/react";
+
 export default function ContactPage() {
-    return (
-      <div className="min-h-screen bg-white px-6 py-24 sm:py-32 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight text-purple-700 sm:text-4xl">
-            Get in Touch
-          </h2>
-          <p className="mt-2 text-lg leading-8 text-gray-600">
-            We'd love to hear from you. Fill out the form below and we’ll respond as soon as possible.
-          </p>
-        </div>
-  
-        <form className="mx-auto mt-16 max-w-xl space-y-6">
+  const [state, handleSubmit] = useForm("xvgrgqzd");
+
+  return (
+    <div className="min-h-screen bg-gray-900 text-white px-6 py-24 sm:py-32 lg:px-8">
+      <div className="mx-auto max-w-2xl text-center">
+        <h2 className="text-4xl font-bold tracking-tight text-indigo-400 sm:text-5xl">
+          Get in Touch
+        </h2>
+        <p className="mt-4 text-lg text-gray-300">
+          We'd love to hear from you. Fill out the form below and we’ll respond as soon as possible.
+        </p>
+      </div>
+
+      {state.succeeded ? (
+        <p className="text-center text-green-400 mt-12 text-lg font-medium">
+          Thanks for reaching out! We'll get back to you soon.
+        </p>
+      ) : (
+        <form onSubmit={handleSubmit} className="mx-auto mt-16 max-w-xl space-y-6">
           <div>
-            <label htmlFor="name" className="block text-sm font-semibold leading-6 text-gray-900">
+            <label htmlFor="name" className="block text-sm font-semibold leading-6 text-indigo-300">
               Name
             </label>
             <input
               type="text"
               name="name"
               id="name"
-              autoComplete="name"
               required
-              className="mt-2 w-full rounded-md border-0 bg-gray-100 px-4 py-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-purple-500 sm:text-sm"
+              className="mt-2 w-full rounded-md border-0 bg-gray-800 text-white px-4 py-3 shadow-sm ring-1 ring-gray-600 placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-500 sm:text-sm"
             />
           </div>
-  
+
           <div>
-            <label htmlFor="email" className="block text-sm font-semibold leading-6 text-gray-900">
+            <label htmlFor="email" className="block text-sm font-semibold leading-6 text-indigo-300">
               Email
             </label>
             <input
+              id="email"
               type="email"
               name="email"
-              id="email"
-              autoComplete="email"
               required
-              className="mt-2 w-full rounded-md border-0 bg-gray-100 px-4 py-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-purple-500 sm:text-sm"
+              className="mt-2 w-full rounded-md border-0 bg-gray-800 text-white px-4 py-3 shadow-sm ring-1 ring-gray-600 placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-500 sm:text-sm"
             />
+            <ValidationError prefix="Email" field="email" errors={state.errors} />
           </div>
-  
+
           <div>
-            <label htmlFor="message" className="block text-sm font-semibold leading-6 text-gray-900">
+            <label htmlFor="message" className="block text-sm font-semibold leading-6 text-indigo-300">
               Message
             </label>
             <textarea
-              name="message"
               id="message"
+              name="message"
               rows="4"
               required
-              className="mt-2 w-full rounded-md border-0 bg-gray-100 px-4 py-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-purple-500 sm:text-sm"
+              className="mt-2 w-full rounded-md border-0 bg-gray-800 text-white px-4 py-3 shadow-sm ring-1 ring-gray-600 placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-500 sm:text-sm"
             />
+            <ValidationError prefix="Message" field="message" errors={state.errors} />
           </div>
-  
+
           <div>
             <button
               type="submit"
-              className="w-full rounded-md bg-purple-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-purple-700 transition"
+              disabled={state.submitting}
+              className="w-full rounded-md bg-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-indigo-700 transition"
             >
-              Send Message
+              {state.submitting ? "Sending..." : "Send Message"}
             </button>
           </div>
         </form>
-      </div>
-    );
-  }
-  
+      )}
+    </div>
+  );
+}
