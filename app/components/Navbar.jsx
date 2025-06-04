@@ -16,6 +16,7 @@ export default function Navbar() {
 
   const navItems = [
     { label: 'Home', href: '/' },
+    { label: 'About', href: '/about'},
     { label: 'Privacy Policy', href: '/privacypolicy' },
     { label: 'Contact', href: '/contact' },
   ];
@@ -26,7 +27,7 @@ export default function Navbar() {
         {/* Logo */}
       <Link href="/" className="inline-flex items-center space-x-2">
       <img
-        src="/images/footballLogo.png"
+        src="/images/thegamesnaplogo.png"
         alt="FootballNews Logo"
         className="h-30  w-auto"
       />
