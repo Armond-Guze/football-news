@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-white">
+      <main className="min-h-screen bg-slate-900">
         <Cards className="text-black mt-6" />
         <FeaturesSection />
         <Footer />
