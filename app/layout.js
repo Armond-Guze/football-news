@@ -20,6 +20,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="bg-white text-gray-900 dark:text-gray-100">
+            <head>
+        {/* AdSense script tag */}
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7706858365277925"
+          crossOrigin="anonymous"
+        ></script>
+      </head>
+
       <body>
         {children}
       </body>
