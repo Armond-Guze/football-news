@@ -1,14 +1,12 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// Load Poppins
+const poppins = Poppins({
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: ["400", "600", "700"], // Choose weights you want
+  variable: "--font-poppins",
+  display: "swap",
 });
 
 export const metadata = {
@@ -19,19 +17,11 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="bg-white text-gray-900 dark:text-gray-100">
-            <head>
-        {/* AdSense script tag */}
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7706858365277925"
-          crossOrigin="anonymous"
-        ></script>
+    <html lang="en" className={`${poppins.variable}`}>
+      <head>
+        <link rel="icon" href="/favicon.ico" />
       </head>
-
-      <body>
-        {children}
-      </body>
+      <body className="font-sans bg-white text-gray-900">{children}</body>
     </html>
   );
 }

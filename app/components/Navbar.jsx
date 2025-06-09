@@ -34,7 +34,7 @@ export default function Navbar() {
             <Link
               key={label}
               href={href}
-              className="text-sm font-medium hover:text-indigo-400 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="text-sm font-semibold hover:text-indigo-400 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500"
             >
               {label}
             </Link>
