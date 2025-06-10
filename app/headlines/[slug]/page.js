@@ -15,17 +15,19 @@ export default function HeadlinePage({ params }) {
     <div className="bg-gray-900 text-white min-h-screen py-16 px-6 max-w-4xl mx-auto">
       <h1 className="text-3xl sm:text-4xl font-bold mb-4">{article.title}</h1>
 
-      {videoId && (
-        <div className="aspect-video mb-6">
-          <iframe
-            src={`https://www.youtube.com/embed/${videoId}`}
-            className="w-full h-full rounded-md shadow-md"
-            frameBorder="0"
-            allow="autoplay; encrypted-media"
-            allowFullScreen
-          ></iframe>
-        </div>
-      )}
+     {article.videoUrl && (
+  <div className="aspect-video mb-6">
+    <iframe
+      src={article.videoUrl.replace("watch?v=", "embed/")}
+      title="YouTube video player"
+      frameBorder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerPolicy="strict-origin-when-cross-origin"
+      allowFullScreen
+      className="w-full h-full rounded-md shadow-md"
+    ></iframe>
+  </div>
+)}
 
       <p className="text-lg text-gray-300">{article.content}</p>
     </div>
