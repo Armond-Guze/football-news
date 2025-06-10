@@ -4,6 +4,7 @@ import FeaturesSection from "./components/FeaturesSections";
 import Footer from "./components/Footer";
 import Headlines from "./components/Headlines";
 
+
 export default function Home() {
   return (
     <>
