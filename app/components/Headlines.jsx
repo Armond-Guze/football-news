@@ -34,7 +34,7 @@ export default function Headlines() {
         {/* Sidebar Headlines */}
         <div className="bg-gray-800 p-6 rounded-xl shadow-md h-fit">
           <h3 className="text-lg font-semibold text-indigo-400 mb-4">
-            Top Headlines
+            Breaking News
           </h3>
           <ul className="space-y-3 text-sm">
             {headlines.map((headline, idx) => (
