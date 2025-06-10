@@ -1,4 +1,4 @@
-import headlines from "@/data/headlinesData";
+import headlines from "../../data/headlinesData";
 import React from "react";
 
 export default function HeadlinePage({ params }) {
