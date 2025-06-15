@@ -1,33 +1,48 @@
-import headlines from "../../data/headlinesData";
-import React from "react";
+import { client } from "../../../sanity/lib/client";
+import { urlFor } from "../../../sanity/lib/image";
+import { PortableText } from "@portabletext/react";
+import { notFound } from "next/navigation";
 
-export default function HeadlinePage({ params }) {
-  const { slug } = params;
-  const article = headlines.find((item) => item.slug === slug);
+export default async function HeadlinePage(props) {
+  const params = props.params || {};
+  const trimmedSlug = params.slug?.trim?.() || "";
 
-  if (!article) {
-    return <div className="text-white p-10">Article not found.</div>;
-  }
+  const headlines = await client.fetch(
+    `*[_type == "headline"]{
+      title,
+      slug,
+      summary,
+      body,
+      coverImage {
+        asset-> {
+          url
+        }
+      }
+    }`
+  );
 
-  const videoId = article.videoUrl.split("v=")[1]?.split("&")[0];
+  const headline = headlines.find(
+    (h) => h.slug?.current?.trim() === trimmedSlug
+  );
+
+  if (!headline) notFound();
 
   return (
-    <div className="bg-gray-900 text-white min-h-screen py-16 px-6 max-w-4xl mx-auto">
-      <h1 className="text-3xl sm:text-4xl font-bold mb-4">{article.title}</h1>
-
-      {videoId && (
-        <div className="aspect-video mb-6">
-          <iframe
-            src={`https://www.youtube.com/embed/${videoId}`}
-            className="w-full h-full rounded-md shadow-md"
-            frameBorder="0"
-            allow="autoplay; encrypted-media"
-            allowFullScreen
-          ></iframe>
+    <main className="bg-gray-900 text-white min-h-screen px-6 py-12">
+      <div className="max-w-4xl mx-auto">
+        <h1 className="text-4xl font-bold mb-6">{headline.title}</h1>
+        {headline.coverImage?.asset?.url && (
+          <img
+            src={headline.coverImage.asset.url}
+            alt={headline.title}
+            className="rounded-lg mb-6 w-full"
+          />
+        )}
+        <p className="text-gray-400 italic mb-6">{headline.summary}</p>
+        <div className="prose prose-invert">
+          <PortableText value={headline.body} />
         </div>
-      )}
-
-      <p className="text-lg text-gray-300">{article.content}</p>
-    </div>
+      </div>
+    </main>
   );
 }

@@ -1,47 +1,50 @@
-// app/components/Headlines.jsx
 "use client";
+
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { client } from '../../sanity/lib/client';
-import { headlineQuery } from '../../sanity/lib/queries';
-
-
+import { client } from "../../sanity/lib/client";
+import { headlineQuery } from "../../sanity/lib/queries";
+import { urlFor } from "../../sanity/lib/image";
 
 export default function Headlines() {
   const [headlines, setHeadlines] = useState([]);
 
   useEffect(() => {
-    client.fetch(headlineQuery).then(setHeadlines);
+    client.fetch(headlineQuery).then((data) => {
+      setHeadlines(data);
+      console.log(
+        "✅ Sidebar slugs →",
+        data.slice(1).map((h) => h.slug)
+      );
+    });
   }, []);
 
   if (!headlines.length) return null;
 
-  const main = headlines[0];
+  const main = headlines[0] || {};
   const sidebar = headlines.slice(1);
 
   return (
     <section className="bg-gray-900 text-white py-16 px-6 lg:px-20">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
-
         {/* Main Feature Story */}
         <div className="md:col-span-2 bg-gray-800 rounded-xl overflow-hidden shadow-lg">
-          <a
-            href={main.videoUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              src={`https://img.youtube.com/vi/${main.videoUrl?.split("v=")[1]}/hqdefault.jpg`}
-              alt={main.title}
-              className="w-full object-cover aspect-video transition hover:brightness-90"
-            />
-          </a>
+          {main?.coverImage && main?.slug?.current && (
+            <Link href={`/headlines/${main.slug.current.trim()}`}>
+              <img
+                src={urlFor(main.coverImage).width(800).url()}
+                alt={main.title}
+                className="w-full aspect-video object-cover rounded-xl shadow-lg transition hover:opacity-80"
+              />
+            </Link>
+          )}
+
           <div className="p-6">
             <h2 className="text-2xl sm:text-3xl font-bold mb-2">
-              {main.title}
+              {main.title || "Untitled"}
             </h2>
             <p className="text-gray-300 text-sm sm:text-base">
-              {main.summary}
+              {main.summary || "No summary available."}
             </p>
           </div>
         </div>
@@ -51,20 +54,36 @@ export default function Headlines() {
           <h3 className="text-lg font-semibold text-indigo-400 mb-4">
             Breaking News
           </h3>
-          <ul className="space-y-3 text-sm">
+          <ul className="space-y-4 text-sm">
             {sidebar.map((headline) => (
               <li key={headline._id} className="border-b border-gray-700 pb-2">
-                <Link
-                  href={`/headlines/${headline.slug.current}`}
-                  className="hover:text-indigo-400 transition"
-                >
-                  • {headline.title}
-                </Link>
+                {headline.slug?.current ? (
+                  <Link href={`/headlines/${headline.slug.current.trim()}`}>
+                    <div className="flex items-start gap-3">
+                      {headline.coverImage && (
+                        <img
+                          src={urlFor(headline.coverImage)
+                            .width(80)
+                            .height(50)
+                            .url()}
+                          alt={headline.title}
+                          className="w-20 h-[50px] aspect-video object-cover rounded-md flex-shrink-0"
+                        />
+                      )}
+                      <span className="hover:text-indigo-400 transition cursor-pointer">
+                        {headline.title}
+                      </span>
+                    </div>
+                  </Link>
+                ) : (
+                  <span className="text-gray-500">
+                    • {headline.title || "Untitled"}
+                  </span>
+                )}
               </li>
             ))}
           </ul>
         </div>
-
       </div>
     </section>
   );

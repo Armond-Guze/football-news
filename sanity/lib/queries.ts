@@ -4,5 +4,7 @@ export const headlineQuery = `*[_type == "headline"] | order(_createdAt desc){
   slug,
   coverImage,
   tags,
-  date
-}`
+  date,
+  summary,
+  videoUrl
+}`;
