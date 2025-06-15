@@ -1,10 +1,10 @@
-export const headlineQuery = `*[_type == "headline"] | order(_createdAt desc){
-  _id,
-  title,
-  slug,
-  coverImage,
-  tags,
-  date,
-  summary,
-  videoUrl
-}`;
+export const headlineQuery = `
+  *[_type == "headline" && published == true] | order(priority asc, _createdAt desc) {
+    _id,
+    title,
+    slug,
+    summary,
+    coverImage,
+    priority
+  }
+`;

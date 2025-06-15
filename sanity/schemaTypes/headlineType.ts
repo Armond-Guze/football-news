@@ -70,6 +70,13 @@ const headlineType = defineType({
       title: "Body Content",
       type: "blockContent",
     }),
+    defineField({
+      name: "priority",
+      title: "Priority",
+      type: "number",
+      description: "Lower numbers show first (e.g., 1 is the top story)",
+      validation: (Rule) => Rule.required().min(1).max(100),
+    }),
   ],
   preview: {
     select: {
