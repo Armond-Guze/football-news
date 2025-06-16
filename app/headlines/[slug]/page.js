@@ -5,12 +5,16 @@ import { notFound } from "next/navigation";
 
 export const dynamic = "force-dynamic";
 
+// ✅ NO destructuring here — params must be awaited safely
 export default async function HeadlinePage(props) {
-  const trimmedSlug = props?.params?.slug?.trim?.() || "";
+  const params = await props?.params;
 
+  if (!params?.slug) return notFound();
+
+  const trimmedSlug = decodeURIComponent(params.slug).trim();
 
   const headline = await client.fetch(
-    `*[_type == "headline" && slug.current == $slug][0]{
+    `*[_type == "headline" && slug.current == $slug && published == true][0]{
       title,
       slug,
       summary,
@@ -19,15 +23,11 @@ export default async function HeadlinePage(props) {
       author->{
         name,
         image {
-          asset-> {
-            url
-          }
+          asset->{ url }
         }
       },
       coverImage {
-        asset->{
-          url
-        }
+        asset->{ url }
       }
     }`,
     { slug: trimmedSlug }
