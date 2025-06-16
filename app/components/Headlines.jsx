@@ -1,27 +1,15 @@
-"use client";
 
-import { useEffect, useState } from "react";
-import Link from "next/link";
 import { client } from "../../sanity/lib/client";
 import { headlineQuery } from "../../sanity/lib/queries";
 import { urlFor } from "../../sanity/lib/image";
+import Link from "next/link";
 
-export default function Headlines() {
-  const [headlines, setHeadlines] = useState([]);
+export default async function Headlines() {
+  const headlines = await client.fetch(headlineQuery);
 
-  useEffect(() => {
-    client.fetch(headlineQuery).then((data) => {
-      setHeadlines(data);
-      console.log(
-        "✅ Sidebar slugs →",
-        data.slice(1).map((h) => h.slug)
-      );
-    });
-  }, []);
+  if (!headlines?.length) return null;
 
-  if (!headlines.length) return null;
-
-  const main = headlines[0] || {};
+  const main = headlines[0];
   const sidebar = headlines.slice(1);
 
   return (
@@ -34,7 +22,7 @@ export default function Headlines() {
               <img
                 src={urlFor(main.coverImage).width(800).url()}
                 alt={main.title}
-                className="w-full aspect-video object-cover rounded-xl shadow-lg transition hover:opacity-80"
+                className="w-full aspect-video object-cover rounded shadow-lg transition hover:opacity-80"
               />
             </Link>
           )}

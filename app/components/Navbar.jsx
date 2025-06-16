@@ -22,9 +22,9 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="inline-flex items-center space-x-2">
           <img
-            src="/images/thesnap.png"
+            src="/images/the-snap-logo.png"
             alt="FootballNews Logo"
-            className="h-30 w-auto"
+            className="h-18 w-auto"
           />
         </Link>
 
