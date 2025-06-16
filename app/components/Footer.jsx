@@ -15,7 +15,7 @@ const Footer = () => {
   }, []);
 
   return (
-    <footer className="bg-gray-950 text-gray-100 py-12 mt-24 border-t border-gray-800">
+    <footer className="bg-background text-gray-100 py-12 border-t border-gray-800">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
           {/* The Game Snap */}

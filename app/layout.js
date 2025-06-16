@@ -18,14 +18,14 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={poppins.variable}>
+    <html lang="en" className={`${poppins.variable} dark`}>
       <head>
         {/* Favicon */}
         <link rel="icon" href="/favicon.ico" sizes="any" />
-        {/* Google Analytics (optional, if using) */}
+        {/* Google Analytics (optional) */}
         <Script
           async
-          src="https://www.googletagmanager.com/gtag/js?id=G-0YLR2ZR8SX" // Replace with your GA ID
+          src="https://www.googletagmanager.com/gtag/js?id=G-0YLR2ZR8SX"
           strategy="afterInteractive"
         />
         <Script id="google-analytics" strategy="afterInteractive">
@@ -37,7 +37,9 @@ export default function RootLayout({ children }) {
           `}
         </Script>
       </head>
-      <body className="font-sans bg-white text-gray-900">{children}</body>
+      <body className="bg-[#09090B] text-[#E4E4E7] font-sans antialiased">
+        {children}
+      </body>
     </html>
   );
 }

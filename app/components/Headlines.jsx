@@ -25,7 +25,7 @@ export default function Headlines() {
   const sidebar = headlines.slice(1);
 
   return (
-    <section className="bg-gray-900 text-white py-16 px-6 lg:px-20">
+    <section className="bg-background text-white py-16 px-6 lg:px-20">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
         {/* Main Feature Story */}
         <div className="md:col-span-2 bg-gray-800 rounded-xl overflow-hidden shadow-lg">
