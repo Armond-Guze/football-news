@@ -8,3 +8,13 @@ export const headlineQuery = `
     priority
   }
 `;
+
+export const powerRankingsQuery = `*[_type == "powerRanking"] | order(rank asc) {
+  _id,
+  rank,
+  teamName,
+  teamLogo,
+  summary,
+  date
+}`;
+

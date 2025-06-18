@@ -1,65 +1,38 @@
-import { client } from '@/sanity/lib/client'
-import { groq } from "next-sanity";
-import Image from "next/image";
+// app/power-rankings/page.tsx
+import { client } from "../../sanity/lib/client"; // ✅ correct alias path
+import { powerRankingsQuery } from "../../sanity/lib/queries";
 import { PortableText } from "@portabletext/react";
+import Image from "next/image";
 
-
-
-export const dynamic = "force-dynamic";
-
-const query = groq`*[_type == "powerRanking"] | order(rank asc) {
-  _id,
-  rank,
-  teamName,
-  teamLogo,
-  date,
-  summary
-}`;
+export const revalidate = 60; // ISR for performance
 
 export default async function PowerRankingsPage() {
-  const data = await client.fetch(query);
+  const rankings = await client.fetch(powerRankingsQuery);
 
   return (
-    <main className="max-w-4xl mx-auto px-6 py-16 text-white">
-      <header className="mb-10 border-b border-gray-700 pb-4">
-        <h1 className="text-4xl font-bold">🏈 2025 NFL Power Rankings</h1>
-        <p className="text-gray-400 text-sm mt-1">Updated weekly</p>
-      </header>
-
-      {/* your map() goes below */}
-
-      {data.map((team: any) => (
-     <article
-  key={team._id}
-  className="mb-10 border-b border-gray-800 pb-6 flex items-start gap-5"
->
-  <div className="text-3xl font-bold text-indigo-400 w-10 shrink-0">
-    #{team.rank}
-  </div>
-
-  <div className="flex-1">
-    <div className="flex items-center gap-3 mb-2">
-      {team.teamLogo && (
-        <img
-          src={team.teamLogo}
-          alt={team.teamName}
-          width={40}
-          height={40}
-          className="rounded-full object-contain bg-white p-1"
-        />
-      )}
-      <h2 className="text-xl font-semibold">{team.teamName}</h2>
+    <div className="px-4 py-12 sm:px-6 lg:px-8 bg-gray-900 text-white">
+      <h1 className="text-4xl font-bold text-indigo-400 mb-10 text-center">NFL Power Rankings</h1>
+      <ul className="space-y-8 max-w-3xl mx-auto">
+        {rankings.map(({ _id, rank, teamName, teamLogo, summary }) => (
+          <li key={_id} className="bg-gray-800 rounded-xl p-6 shadow-md flex flex-col sm:flex-row items-start sm:items-center gap-6">
+            <div className="flex-shrink-0">
+              <Image
+                src={teamLogo.asset.url}
+                alt={teamName}
+                width={64}
+                height={64}
+                className="rounded-full border border-gray-600"
+              />
+            </div>
+            <div className="flex-1">
+              <h2 className="text-xl font-semibold mb-2">
+                #{rank} - {teamName}
+              </h2>
+              <PortableText value={summary} />
+            </div>
+          </li>
+        ))}
+      </ul>
     </div>
-
-    {team.summary && (
-      <div className="prose prose-invert text-gray-300 max-w-none">
-        <PortableText value={team.summary} />
-      </div>
-    )}
-  </div>
-</article>
-
-      ))}
-    </main>
   );
 }

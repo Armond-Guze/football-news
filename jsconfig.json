@@ -2,8 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["app/*"],
-      "@sanity/*": ["sanity/lib/*"]
+      "@sanity/*": ["sanity/*"]  // ✅ remove the extra "lib"
     }
   }
 }

@@ -2,7 +2,6 @@ import { Poppins } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 
-// Load Poppins font
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "600", "700"],
@@ -11,24 +10,51 @@ const poppins = Poppins({
 });
 
 export const metadata = {
-  title: "The Game Snap - Top 2025 NFL Quarterbacks & Football News",
+  title: "The Game Snap – NFL News, Power Rankings & Quarterback Insights",
   description:
-    "Stay updated with expert rankings, AI-powered highlights, and breaking football coverage. The Game Snap brings you the latest on NFL quarterbacks, draft buzz, and team insights.",
+    "Stay updated with expert takes, weekly power rankings, draft analysis, and the latest headlines in pro football. The Game Snap delivers bold coverage for NFL fans.",
+  keywords: [
+    "NFL",
+    "Football News",
+    "NFL Power Rankings",
+    "Quarterback Rankings",
+    "Draft Analysis",
+    "NFL Teams",
+    "The Game Snap",
+  ],
+  openGraph: {
+    title: "The Game Snap",
+    description:
+      "Bold NFL coverage. Quarterbacks, Power Rankings, Draft Rumors & Weekly Takes.",
+    url: "https://thegamesnap.com",
+    siteName: "The Game Snap",
+    images: [
+      {
+        url: "https://thegamesnap.com/og-default.jpg", // Optional: upload a banner here
+        width: 1200,
+        height: 630,
+        alt: "The Game Snap - NFL Power Rankings & Draft Coverage",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "The Game Snap",
+    description:
+      "NFL headlines, rankings, and draft stories — your go-to source for football talk.",
+    creator: "@thegamesnap", // ← update if you ever make a Twitter
+    images: ["https://thegamesnap.com/og-default.jpg"],
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${poppins.variable} dark`}>
+    <html lang="en" className={poppins.variable}>
       <head>
         {/* Favicon */}
         <link rel="icon" href="/favicon.ico" sizes="any" />
-
-        {/* Google AdSense */}
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7706858365277925"
-          crossOrigin="anonymous"
-        ></script>
 
         {/* Google Analytics */}
         <Script
@@ -45,9 +71,7 @@ export default function RootLayout({ children }) {
           `}
         </Script>
       </head>
-      <body className="bg-[#09090B] text-[#E4E4E7] font-sans antialiased">
-        {children}
-      </body>
+      <body className="font-sans bg-background text-foreground">{children}</body>
     </html>
   );
 }
