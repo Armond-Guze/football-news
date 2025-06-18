@@ -86,6 +86,7 @@ const Footer = () => {
         <div className="mt-12 flex justify-center">
           <ins
             className="adsbygoogle"
+            style={{ display: "block", width: "100%", height: "90px" }}
             data-ad-client="ca-pub-XXXX"
             data-ad-slot="6943307518"
             data-ad-format="auto"
