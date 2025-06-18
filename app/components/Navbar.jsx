@@ -11,7 +11,8 @@ export default function Navbar() {
 
   // Google AdSense init
   useEffect(() => {
-    if (typeof window !== "undefined" && window.adsbygoogle) {
+    const ad = document.getElementById("navbar-ad"); // or "footer-ad"
+    if (ad && !ad.getAttribute("data-adsbygoogle-status")) {
       try {
         (window.adsbygoogle = window.adsbygoogle || []).push({});
       } catch (e) {
@@ -25,7 +26,7 @@ export default function Navbar() {
     { label: "About", href: "/about" },
     { label: "Privacy Policy", href: "/privacypolicy" },
     { label: "Contact", href: "/contact" },
-    // { label: "Power Rankings", href: "/power-rankings" },
+    { label: "Power Rankings", href: "/power-rankings" },
   ];
 
   return (
@@ -82,17 +83,16 @@ export default function Navbar() {
           </div>
         )}
       </nav>
-
       {/* Google AdSense Under Navbar */}
       <div className="w-full flex justify-center bg-background">
         <ins
           className="adsbygoogle"
-          style={{ display: "block", width: "100%", height: "90px" }}
-          data-ad-client="ca-pub-7706858365277925"
+          data-ad-client="ca-pub-XXXX"
           data-ad-slot="8764188470"
           data-ad-format="auto"
           data-full-width-responsive="true"
-        ></ins>
+          id="navbar-ad"
+        />
       </div>
     </>
   );

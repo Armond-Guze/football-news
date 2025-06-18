@@ -5,7 +5,8 @@ import { useEffect } from "react";
 
 const Footer = () => {
   useEffect(() => {
-    if (typeof window !== "undefined" && window.adsbygoogle) {
+    const ad = document.getElementById("footer-ad");
+    if (ad && !ad.getAttribute("data-adsbygoogle-status")) {
       try {
         (window.adsbygoogle = window.adsbygoogle || []).push({});
       } catch (e) {
@@ -85,12 +86,12 @@ const Footer = () => {
         <div className="mt-12 flex justify-center">
           <ins
             className="adsbygoogle"
-            style={{ display: "block", width: "100%", height: "90px" }}
-            data-ad-client="ca-pub-7706858365277925"
-            data-ad-slot="8764188470"
+            data-ad-client="ca-pub-XXXX"
+            data-ad-slot="6943307518"
             data-ad-format="auto"
             data-full-width-responsive="true"
-          ></ins>
+            id="footer-ad"
+          />
         </div>
 
         <Script
