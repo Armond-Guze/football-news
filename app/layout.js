@@ -1,6 +1,7 @@
 import { Poppins } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
+import LayoutWrapper from "./components/LayoutWrapper";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -30,7 +31,7 @@ export const metadata = {
     siteName: "The Game Snap",
     images: [
       {
-        url: "https://thegamesnap.com/og-default.jpg", // Optional: upload a banner here
+        url: "https://thegamesnap.com/og-default.jpg",
         width: 1200,
         height: 630,
         alt: "The Game Snap - NFL Power Rankings & Draft Coverage",
@@ -44,7 +45,7 @@ export const metadata = {
     title: "The Game Snap",
     description:
       "NFL headlines, rankings, and draft stories — your go-to source for football talk.",
-    creator: "@thegamesnap", // ← update if you ever make a Twitter
+    creator: "@thegamesnap",
     images: ["https://thegamesnap.com/og-default.jpg"],
   },
 };
@@ -53,10 +54,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={poppins.variable}>
       <head>
-        {/* Favicon */}
         <link rel="icon" href="/favicon.ico" sizes="any" />
-
-        {/* Google Analytics */}
         <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-0YLR2ZR8SX"
@@ -71,7 +69,10 @@ export default function RootLayout({ children }) {
           `}
         </Script>
       </head>
-      <body className="font-sans bg-background text-foreground">{children}</body>
+
+      <body className="font-sans bg-background text-foreground">
+        <LayoutWrapper>{children}</LayoutWrapper>
+      </body>
     </html>
   );
 }

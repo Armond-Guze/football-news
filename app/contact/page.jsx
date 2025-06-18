@@ -6,7 +6,7 @@ export default function ContactPage() {
   const [state, handleSubmit] = useForm("xvgrgqzd");
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white px-6 py-24 sm:py-32 lg:px-8">
+    <div className="min-h-screen bg-background text-white px-6 py-24 sm:py-32 lg:px-8">
       <div className="mx-auto max-w-2xl text-center">
         <h2 className="text-4xl font-bold tracking-tight text-indigo-400 sm:text-5xl">
           Get in Touch

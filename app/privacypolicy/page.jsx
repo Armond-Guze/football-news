@@ -1,6 +1,6 @@
 export default function PrivacyPolicy() {
   return (
-    <div className="min-h-screen bg-gray-900 text-white py-24 px-6 sm:px-12 lg:px-24">
+    <div className="min-h-screen bg-background text-white py-24 px-6 sm:px-12 lg:px-24">
       <div className="max-w-5xl mx-auto">
         <h1 className="text-5xl font-bold text-indigo-400 mb-8 text-center">
           Privacy <span className="text-white">Policy</span>
@@ -61,7 +61,7 @@ export default function PrivacyPolicy() {
           <h2 className="text-2xl font-semibold text-indigo-300 mb-4">Your Rights</h2>
           <p className="text-gray-300 leading-relaxed">
             You have the right to access, correct, or delete your personal data. If you have questions or requests regarding your information, please contact us at&nbsp;
-            <a href="mailto:privacy@thegamesnap.com" className="text-indigo-400 underline">privacy@thegamesnap.com</a>.
+            <a href="mailto:privacy@thegamesnap.com" className="text-indigo-400 underline">thegamesnap@yahoo.com</a>.
           </p>
         </section>
 

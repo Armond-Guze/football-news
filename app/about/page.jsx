@@ -1,6 +1,6 @@
 export default function About() {
   return (
-    <div className="min-h-screen bg-gray-900 text-white px-6 py-24 sm:py-32 lg:px-8">
+    <div className="min-h-screen bg-background text-white px-6 py-24 sm:py-32 lg:px-8">
       <div className="max-w-3xl mx-auto">
         <h1 className="text-5xl font-bold text-indigo-400 mb-8 text-center">About The Game Snap</h1>
 
