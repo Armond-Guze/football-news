@@ -72,6 +72,12 @@ export default defineType({
       type: "datetime",
       initialValue: () => new Date().toISOString(),
     }),
+    defineField({
+      name: "previousRank",
+      title: "Previous Rank",
+      type: "number",
+      validation: (Rule) => Rule.min(1).max(32),
+    }),
   ],
   preview: {
     select: {
@@ -79,6 +85,7 @@ export default defineType({
       subtitle: "rank",
       media: "teamLogo",
     },
+
     prepare({ title, subtitle, media }) {
       return {
         title,

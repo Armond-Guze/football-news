@@ -87,6 +87,7 @@ export default function Navbar() {
       <div className="w-full flex justify-center bg-background">
         <ins
           className="adsbygoogle"
+          style={{ display: "block", width: "100%", height: "90px" }}
           data-ad-client="ca-pub-XXXX"
           data-ad-slot="8764188470"
           data-ad-format="auto"
