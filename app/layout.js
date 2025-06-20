@@ -2,6 +2,8 @@ import { Poppins } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import LayoutWrapper from "./components/LayoutWrapper";
+import { Analytics } from "@vercel/analytics/react";
+import GoogleAds from "./components/GoogleAds";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -55,11 +57,12 @@ export default function RootLayout({ children }) {
     <html lang="en" className={poppins.variable}>
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
-        <Script
+        <script
+          data-ad-client="ca-pub-7706858365277925"
           async
-          src="https://www.googletagmanager.com/gtag/js?id=G-0YLR2ZR8SX"
-          strategy="afterInteractive"
-        />
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+        ></script>
+
         <Script id="google-analytics" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
@@ -72,6 +75,8 @@ export default function RootLayout({ children }) {
 
       <body className="font-sans bg-background text-foreground">
         <LayoutWrapper>{children}</LayoutWrapper>
+        <GoogleAds />
+        <Analytics />
       </body>
     </html>
   );

@@ -1,20 +1,7 @@
-"use client";
+'use client';
 import Link from "next/link";
-import Script from "next/script";
-import { useEffect } from "react";
 
 const Footer = () => {
-  useEffect(() => {
-    const ad = document.getElementById("footer-ad");
-    if (ad && !ad.getAttribute("data-adsbygoogle-status")) {
-      try {
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
-      } catch (e) {
-        console.error("Adsense error:", e);
-      }
-    }
-  }, []);
-
   return (
     <footer className="bg-background text-gray-100 py-12 border-t border-gray-800">
       <div className="max-w-7xl mx-auto px-6">
@@ -81,26 +68,6 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-
-        {/* AdSense */}
-        <div className="mt-12 flex justify-center">
-          <ins
-            className="adsbygoogle"
-            style={{ display: "block", width: "100%", height: "90px" }}
-            data-ad-client="ca-pub-XXXX"
-            data-ad-slot="6943307518"
-            data-ad-format="auto"
-            data-full-width-responsive="true"
-            id="footer-ad"
-          />
-        </div>
-
-        <Script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7706858365277925"
-          crossOrigin="anonymous"
-          strategy="afterInteractive"
-        />
 
         <div className="mt-12 text-center text-xs text-gray-500 border-t border-gray-800 pt-6">
           &copy; {new Date().getFullYear()} The Game Snap. All rights reserved.
