@@ -84,7 +84,7 @@ export default function FeaturesSection() {
           <img
             src="/images/helmet-background.png"
             alt="Quarterback helmet and background"
-            className="w-full max-w-s rounded-lg shadow-md ring-1 ring-white/10"
+            className="w-full max-w-sm rounded-lg shadow-md ring-1 ring-white/10"
             width="1400"
             height="1250"
           />
