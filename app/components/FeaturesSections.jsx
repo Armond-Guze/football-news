@@ -1,7 +1,26 @@
+"use client";
+
+import Image from "next/image";
+
 export default function FeaturesSection() {
   return (
-    <div className="overflow-hidden bg-background py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+    <section className="relative overflow-hidden text-white py-24 sm:py-32 z-0">
+      {/* Background image layer */}
+      <div className="absolute inset-0 -z-20">
+        <Image
+          src="/images/backgroundImage.jpeg"
+          alt="Section texture background"
+          fill
+          quality={100}
+          priority
+          className="object-cover"
+        />
+      </div>
+
+      {/* Optional dark overlay to improve contrast */}
+      <div className="absolute inset-0 bg-black/50 -z-10" />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
           <div className="lg:pt-4 lg:pr-8">
             <div className="lg:max-w-lg">
@@ -74,13 +93,15 @@ export default function FeaturesSection() {
                     </svg>
                     Lamar Jackson's game-breaking speed.
                   </dt>
-                  <dd className="inline"> 
+                  <dd className="inline">
                     In an instant, Jackson can flip the field with his legs. His ability to escape and accelerate makes him a threat from anywhere.
                   </dd>
                 </div>
               </dl>
             </div>
           </div>
+
+          {/* Right-side image */}
           <img
             src="/images/helmet-background.png"
             alt="Quarterback helmet and background"
@@ -90,6 +111,6 @@ export default function FeaturesSection() {
           />
         </div>
       </div>
-    </div>
+    </section>
   );
 }

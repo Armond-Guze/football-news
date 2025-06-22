@@ -1,8 +1,8 @@
-
 import { client } from "../../sanity/lib/client";
 import { headlineQuery } from "../../sanity/lib/queries";
 import { urlFor } from "../../sanity/lib/image";
 import Link from "next/link";
+import Image from "next/image";
 
 export default async function Headlines() {
   const headlines = await client.fetch(headlineQuery);
@@ -13,10 +13,23 @@ export default async function Headlines() {
   const sidebar = headlines.slice(1);
 
   return (
-    <section className="bg-background text-white py-16 px-6 lg:px-20">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
+    <section className="relative text-white py-16 px-6 lg:px-20 overflow-hidden z-0 min-h-[600px]">
+  {/* Background Image */}
+  <div className="absolute inset-0 -z-20">
+    <Image
+      src="/images/backgroundImage.jpeg"
+      alt="Black textured background"
+      fill
+      className="object-cover"
+    />
+  </div>
+
+  {/* Slight black tint overlay */}
+  <div className="absolute inset-0 bg-black/50 -z-10" />
+
+      <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
         {/* Main Feature Story */}
-        <div className="md:col-span-2 bg-gray-800 rounded-xl overflow-hidden shadow-lg">
+        <div className="md:col-span-2 bg-black/80 rounded-xl overflow-hidden shadow-lg">
           {main?.coverImage && main?.slug?.current && (
             <Link href={`/headlines/${main.slug.current.trim()}`}>
               <img
@@ -38,7 +51,7 @@ export default async function Headlines() {
         </div>
 
         {/* Sidebar Headlines */}
-        <div className="bg-gray-800 p-6 rounded-xl shadow-md h-fit">
+        <div className="bg-black/80 p-6 rounded-xl shadow-md h-fit">
           <h3 className="text-lg font-semibold text-indigo-400 mb-4">
             Breaking News
           </h3>
@@ -55,7 +68,7 @@ export default async function Headlines() {
                             .height(50)
                             .url()}
                           alt={headline.title}
-                          className="w-20 h-[50px] aspect-video object-cover rounded-md flex-shrink-0"
+                          className="w-20 h-[50px] object-cover rounded-md flex-shrink-0"
                         />
                       )}
                       <span className="hover:text-indigo-400 transition cursor-pointer">

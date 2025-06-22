@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 const qbs = [
   {
     name: "Patrick Mahomes — Kansas City Chiefs",
@@ -35,12 +37,28 @@ const qbs = [
 
 export default function CardsBento() {
   return (
-    <section className="bg-background py-24 sm:py-32">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+    <section className="relative min-h-screen bg-black py-24 sm:py-32 text-white overflow-hidden z-0">
+      {/* Background Image */}
+      <div className="absolute inset-0 -z-20">
+        <Image
+          src="/images/backgroundImage1.png"
+          alt="Quarterbacks background"
+          fill
+          priority
+          quality={100}
+          className="object-cover"
+          sizes="100vw"
+        />
+      </div>
+
+      {/* Lighter dark overlay to preserve image visibility */}
+      <div className="absolute inset-0 bg-black/30 -z-10" />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
         <h2 className="text-indigo-400 text-base font-semibold text-center mb-4">
           Elite QB Watch
         </h2>
-        <p className="text-4xl sm:text-5xl font-bold text-white text-center mb-14">
+        <p className="text-4xl sm:text-5xl font-bold text-center mb-14">
           Top 5 Quarterbacks to Watch in 2025
         </p>
 
@@ -48,7 +66,7 @@ export default function CardsBento() {
           {qbs.map((qb, i) => (
             <div
               key={i}
-              className="bg-white rounded-xl overflow-hidden shadow-lg flex flex-col hover:shadow-xl transition-shadow"
+              className="bg-black/60 backdrop-blur-md text-white rounded-xl overflow-hidden shadow-lg flex flex-col hover:shadow-xl transition-shadow"
             >
               <a
                 href={`https://www.youtube.com/watch?v=${qb.videoId}`}
@@ -65,10 +83,10 @@ export default function CardsBento() {
                 </div>
               </a>
               <div className="p-6">
-                <h3 className="text-lg font-bold text-gray-900 mb-2">
+                <h3 className="text-lg font-bold text-white mb-2">
                   {i + 1}. {qb.name}
                 </h3>
-                <p className="text-sm text-gray-700">{qb.description}</p>
+                <p className="text-sm text-gray-300">{qb.description}</p>
               </div>
             </div>
           ))}

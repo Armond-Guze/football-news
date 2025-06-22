@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -18,14 +19,27 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="bg-background text-gray-100 shadow-sm sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-18">
+    <nav className="relative text-gray-100 shadow-sm sticky top-0 z-50 overflow-hidden">
+      {/* Background Image */}
+      <div className="absolute inset-0 -z-20">
+        <Image
+          src="/images/backgroundImage1.jpeg"
+          alt="Navbar texture"
+          fill
+          className="object-cover"
+        />
+      </div>
+
+      {/* Subtle black tint for readability */}
+      <div className="absolute inset-0 bg-black/60 -z-10" />
+
+      <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-18 py-3 relative z-10">
         {/* Logo */}
         <Link href="/" className="inline-flex items-center space-x-2">
           <img
             src="/images/the-snap-logo.png"
             alt="FootballNews Logo"
-            className="h-12 md:h-18 w-auto" 
+            className="h-12 md:h-18 w-auto"
           />
         </Link>
 
@@ -56,7 +70,7 @@ export default function Navbar() {
 
       {/* Mobile Dropdown */}
       {menuOpen && (
-        <div className="md:hidden bg-slate-900 border-t border-gray-700 px-6 py-4 space-y-4">
+        <div className="md:hidden bg-black/80 border-t border-gray-700 px-6 py-4 space-y-4 relative z-10">
           {navItems.map(({ label, href }) => (
             <Link
               key={label}

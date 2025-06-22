@@ -1,10 +1,25 @@
-'use client';
+"use client";
+
 import Link from "next/link";
+import Image from "next/image";
 
 const Footer = () => {
   return (
-    <footer className="bg-background text-gray-100 py-12 border-t border-gray-800">
-      <div className="max-w-7xl mx-auto px-6">
+    <footer className="relative text-gray-100 py-12 border-t border-gray-800 overflow-hidden">
+      {/* Background image layer */}
+      <div className="absolute inset-0 -z-20">
+        <Image
+          src="/images/backgroundImage.jpeg"
+          alt="Footer texture background"
+          fill
+          className="object-cover"
+        />
+      </div>
+
+      {/* Optional dark tint for contrast */}
+      <div className="absolute inset-0 bg-black/60 -z-10" />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
           {/* The Game Snap */}
           <div>
