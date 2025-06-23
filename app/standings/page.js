@@ -1,15 +1,10 @@
 import Image from "next/image";
-import { client } from "@sanity/client";
-import { urlFor } from "@sanity/image-url";
-import { standingsQuery } from "@sanity/queries"; // using your alias
-const standings = await client.fetch(standingsQuery);
+import { client } from "../../../sanity/lib/client"; // ✅ correct path
+import { urlFor } from "@sanity/image-url"; // optional if using urlFor
+import { standingsQuery } from "../../../sanity/lib/queries";
 
-
-// Reuse your fetch code here if needed
 async function getStandings() {
-  const standings = await client.fetch(
-    `*[_type == "standing"] | order(conference asc, division asc, teamName asc)`
-  );
+  const standings = await client.fetch(standingsQuery);
   return standings;
 }
 
