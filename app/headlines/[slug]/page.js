@@ -52,7 +52,7 @@ export default async function HeadlinePage(props) {
       {/* 📦 Content Container */}
       <div className="px-4 md:px-8 py-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-10">
         {/* ✅ Main Article Section */}
-<article className="lg:col-span-2 flex flex-col items-center">
+        <article className="lg:col-span-2 flex flex-col items-center">
           {/* Title + Meta */}
           <h1 className="text-3xl md:text-4xl font-extrabold leading-tight text-white mb-4">
             {headline.title}
@@ -77,18 +77,17 @@ export default async function HeadlinePage(props) {
           </div>
 
           {/* ✅ Cover Image BELOW headline */}
-        {headline.coverImage?.asset?.url && (
-  <div className="w-full flex justify-center mb-8">
-    <div className="relative w-full max-w-3xl aspect-[16/7] max-h-[480px] overflow-hidden rounded-md">
-      <img
-        src={headline.coverImage.asset.url}
-        alt={headline.title}
-        className="w-full h-full object-cover object-center"
-      />
-    </div>
-  </div>
-)}
-
+          {headline.coverImage?.asset?.url && (
+            <div className="w-full flex justify-center mb-8">
+              <div className="relative w-full max-w-3xl h-[320px] overflow-hidden rounded-md border border-slate-700 shadow-sm">
+                <img
+                  src={headline.coverImage.asset.url}
+                  alt={headline.title}
+                  className="w-full h-full object-cover object-center"
+                />
+              </div>
+            </div>
+          )}
 
           {/* ✅ Body Text */}
           <section className="w-full flex justify-center">
@@ -103,7 +102,7 @@ export default async function HeadlinePage(props) {
           <h2 className="text-xl font-semibold border-b border-gray-700 pb-2 mb-4">
             More Headlines
           </h2>
-          <div className="space-y-6">
+          <div className="space-y-3">
             {otherHeadlines
               .filter((h) => h.slug.current !== trimmedSlug)
               .map((h) => (

@@ -1,3 +1,4 @@
+import { headlineQuery } from './lib/queries'
 import powerRanking from './schemaTypes/powerRanking'
 // import other schemas here (e.g., headlines, authors, etc.)
 
