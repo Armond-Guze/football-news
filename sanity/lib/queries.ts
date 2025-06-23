@@ -16,6 +16,7 @@ export const powerRankingsQuery = `*[_type == "powerRanking"] | order(rank asc) 
   teamLogo,
   summary,
   body,
+  teamColor,
   date,
   previousRank
 }`;

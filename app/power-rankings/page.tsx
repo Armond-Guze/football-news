@@ -1,68 +1,110 @@
-// app/power-rankings/page.tsx
-import { client } from "../../sanity/lib/client"; // ✅ correct alias path
+import { client } from "../../sanity/lib/client";
 import { powerRankingsQuery } from "../../sanity/lib/queries";
-import { PortableText } from "@portabletext/react";
 import Image from "next/image";
-import { urlFor } from "../../sanity/lib/image"; // ✅ Adjust path if needed
+import { PortableText } from "@portabletext/react";
+import { urlFor } from "../../sanity/lib/image";
 
-export const revalidate = 60; // ISR for performance
+export const revalidate = 60;
 
 export default async function PowerRankingsPage() {
   const rankings = await client.fetch(powerRankingsQuery);
 
   return (
-    <div className="px-4 py-12 sm:px-6 lg:px-8 bg-background text-white">
-      <h1 className="text-4xl font-bold text-indigo-400 mb-10 text-center">
+    <div className="px-4 py-16 sm:px-6 lg:px-12 bg-background text-white">
+      <h1 className="text-5xl font-bold text-indigo-400 mb-14 text-center">
         NFL Power Rankings
       </h1>
-      <ul className="space-y-8 max-w-3xl mx-auto">
-        {rankings.map(({ _id, rank, previousRank, teamName, teamLogo, summary, body }) => {
-          const change = previousRank ? previousRank - rank : 0;
 
-          return (
-            <li
-              key={_id}
-              className="bg-gray-800 rounded-xl p-6 shadow-md flex flex-col sm:flex-row items-start sm:items-center gap-6"
-            >
-              <div className="flex-shrink-0">
-                {teamLogo?.asset && (
-                  <Image
-                    src={urlFor(teamLogo).url()}
-                    alt={teamName}
-                    width={64}
-                    height={64}
-                    className="rounded-full border border-gray-600"
-                  />
-                )}
-              </div>
-              <div className="flex-1">
-                <h2 className="text-xl font-semibold mb-2">
-                  #{rank} - {teamName}
-                  <span
-                    className={`ml-2 text-sm ${
-                      change > 0
-                        ? "text-green-500"
-                        : change < 0
-                        ? "text-red-500"
-                        : "text-gray-400"
-                    }`}
-                  >
-                    {change > 0 ? `▲ ${change}` : change < 0 ? `▼ ${Math.abs(change)}` : "–"}
-                  </span>
-                </h2>
+      <div className="space-y-16 max-w-5xl mx-auto">
+        {rankings.map(
+          ({
+            _id,
+            rank,
+            previousRank,
+            teamColor,
+            teamName,
+            teamLogo,
+            summary,
+            body,
+          }) => {
+            const change = previousRank ? previousRank - rank : 0;
+            const movement =
+              change > 0
+                ? { symbol: "▲", color: "text-green-500" }
+                : change < 0
+                ? { symbol: "▼", color: "text-red-500" }
+                : { symbol: "–", color: "text-gray-400" };
 
-                <p className="text-gray-300">{summary}</p>
+            return (
+              <div
+                key={_id}
+                className="relative bg-gray-900 rounded-2xl p-6 sm:p-10 shadow-lg"
+              >
+                {/* Vertical Stripe */}
+                <div
+                  className="absolute left-0 top-0 h-full w-2 sm:w-2 rounded-l-xl"
+                  style={{ backgroundColor: teamColor || "#ffffff" }}
+                />
 
+                {/* Top Row */}
+                <div className="flex items-center gap-4 sm:gap-6 mb-6">
+                  {/* Rank */}
+                  <div className="flex flex-col items-center min-w-[60px]">
+                    <span className="text-sm sm:text-base text-gray-400">
+                      Rank
+                    </span>
+                    <span className="text-4xl sm:text-5xl font-extrabold text-indigo-300">
+                      {rank}
+                    </span>
+                  </div>
+
+                  {/* Logo */}
+                  {teamLogo?.asset && (
+                    <Image
+                      src={urlFor(teamLogo).url()}
+                      alt={teamName}
+                      width={72}
+                      height={72}
+                      className="rounded-full border border-gray-600"
+                    />
+                  )}
+
+                  {/* Team Name + Movement */}
+                  <div className="flex-1 flex items-center justify-between">
+                    <h2 className="text-2xl sm:text-3xl font-semibold text-white">
+                      {teamName}
+                    </h2>
+                    <div className="flex flex-col items-center justify-center min-w-[32px]">
+                      <span
+                        className={`text-xl font-semibold ${movement.color}`}
+                      >
+                        {movement.symbol}
+                      </span>
+                      {change !== 0 && (
+                        <span className={`text-sm ${movement.color}`}>
+                          {Math.abs(change)}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Summary */}
+                <p className="text-base sm:text-lg text-slate-200 leading-relaxed mb-4">
+                  {summary}
+                </p>
+
+                {/* Body */}
                 {Array.isArray(body) && body.length > 0 && (
-                  <div className="mt-4 text-gray-400 text-sm">
+                  <div className="mt-2 text-base sm:text-lg text-slate-300 leading-loose">
                     <PortableText value={body} />
                   </div>
                 )}
               </div>
-            </li>
-          );
-        })}
-      </ul>
+            );
+          }
+        )}
+      </div>
     </div>
   );
 }

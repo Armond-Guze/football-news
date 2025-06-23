@@ -58,6 +58,11 @@ export default defineType({
       initialValue: true,
     }),
     defineField({
+      name: "teamColor",
+      title: "Team Color",
+      type: "string",
+    }),
+    defineField({
       name: "conference",
       title: "Conference",
       type: "string",
