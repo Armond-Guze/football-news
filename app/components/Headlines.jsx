@@ -25,7 +25,7 @@ export default async function Headlines() {
   </div>
 
   {/* Slight black tint overlay */}
-  <div className="absolute inset-0 bg-black/50 -z-10" />
+  <div className="absolute inset-0 bg-black/30 -z-10" />
 
       <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
         {/* Main Feature Story */}
