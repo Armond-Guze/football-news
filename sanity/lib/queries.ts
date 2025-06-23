@@ -20,22 +20,3 @@ export const powerRankingsQuery = `*[_type == "powerRanking"] | order(rank asc) 
   date,
   previousRank
 }`;
-
-export const standingsQuery = `*[_type == "standing"] | order(conference asc, division asc, teamName asc) {
-  _id,
-  teamName,
-  conference,
-  division,
-  wins,
-  losses,
-  ties,
-  pointsFor,
-  pointsAgainst,
-  homeRecord,
-  awayRecord,
-  streak,
-  logo {
-    asset->{_ref, url}
-  }
-}`;
-
