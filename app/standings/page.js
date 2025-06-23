@@ -1,6 +1,9 @@
 import Image from "next/image";
 import { client } from "@sanity/client";
 import { urlFor } from "@sanity/image-url";
+import { standingsQuery } from "@sanity/queries"; // using your alias
+const standings = await client.fetch(standingsQuery);
+
 
 // Reuse your fetch code here if needed
 async function getStandings() {
