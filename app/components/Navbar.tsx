@@ -36,10 +36,13 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-18 py-3 relative z-10">
         {/* Logo */}
         <Link href="/" className="inline-flex items-center space-x-2">
-          <img
+          <Image
             src="/images/the-snap-logo.png"
             alt="FootballNews Logo"
+            width={72}
+            height={72}
             className="h-12 md:h-18 w-auto"
+            priority
           />
         </Link>
 

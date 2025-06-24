@@ -1,6 +1,13 @@
 'use client';
 import { useEffect } from 'react';
 
+// Extend Window interface to include adsbygoogle
+declare global {
+  interface Window {
+    adsbygoogle: any[];
+  }
+}
+
 export default function GoogleAds() {
   useEffect(() => {
     try {

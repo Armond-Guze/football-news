@@ -31,7 +31,7 @@ export default function FeaturesSection() {
                 What Makes Elite QBs Unstoppable
               </p>
               <p className="mt-6 text-lg leading-8 text-slate-300">
-                Quarterbacks like Mahomes, Burrow, and Jackson aren't just athletes—they're playmakers, leaders, and culture-setters. Here's what sets them apart from the rest.
+                Quarterbacks like Mahomes, Burrow, and Jackson aren&apos;t just athletes—they&apos;re playmakers, leaders, and culture-setters. Here&apos;s what sets them apart from the rest.
               </p>
               <dl className="mt-10 max-w-xl space-y-8 text-base leading-7 text-slate-300 lg:max-w-none">
                 <div className="relative pl-9">
@@ -48,7 +48,7 @@ export default function FeaturesSection() {
                         clipRule="evenodd"
                       />
                     </svg>
-                    Patrick Mahomes' improvisation.
+                    Patrick Mahomes&apos; improvisation.
                   </dt>
                   <dd className="inline">
                     With his no-look passes, sidearm throws, and unreal pocket awareness, Mahomes turns broken plays into highlight reels.
@@ -69,7 +69,7 @@ export default function FeaturesSection() {
                         clipRule="evenodd"
                       />
                     </svg>
-                    Joe Burrow's poise under pressure.
+                    Joe Burrow&apos;s poise under pressure.
                   </dt>
                   <dd className="inline">
                     Cool, calculated, and confident—Burrow thrives in tight pockets and clutch moments, making big-time throws look routine.
@@ -91,7 +91,7 @@ export default function FeaturesSection() {
                         clipRule="evenodd"
                       />
                     </svg>
-                    Lamar Jackson's game-breaking speed.
+                    Lamar Jackson&apos;s game-breaking speed.
                   </dt>
                   <dd className="inline">
                     In an instant, Jackson can flip the field with his legs. His ability to escape and accelerate makes him a threat from anywhere.
@@ -102,12 +102,12 @@ export default function FeaturesSection() {
           </div>
 
           {/* Right-side image */}
-          <img
+          <Image
             src="/images/helmet-background.png"
             alt="Quarterback helmet and background"
             className="w-full max-w-s rounded-lg shadow-md ring-1 ring-white/10"
-            width="1400"
-            height="1250"
+            width={1400}
+            height={1250}
           />
         </div>
       </div>

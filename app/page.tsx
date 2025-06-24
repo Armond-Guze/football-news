@@ -31,10 +31,8 @@ export default function Home() {
               </div>
             </div>
           </Link>
-        </section>
-
-        {/* Other Sections */}
-        <Cards className="text-black mt-6" />
+        </section>        {/* Other Sections */}
+        <Cards />
         <FeaturesSection />
       </main>
     </>

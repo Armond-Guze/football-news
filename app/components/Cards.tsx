@@ -73,11 +73,14 @@ export default function CardsBento() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block"
+                title={`Watch ${qb.name} highlights on YouTube`}
               >
                 <div className="aspect-[16/9] w-full overflow-hidden">
-                  <img
+                  <Image
                     src={`https://img.youtube.com/vi/${qb.videoId}/hqdefault.jpg`}
                     alt={qb.name}
+                    width={480}
+                    height={360}
                     className="object-cover w-full h-full"
                   />
                 </div>
