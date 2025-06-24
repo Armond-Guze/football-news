@@ -37,6 +37,10 @@ export default async function PowerRankingsPage() {
               ? `${teamColor}10`
               : "#ffffff10";
 
+            const gradientStyle = {
+              background: `linear-gradient(to right, ${teamColor || "#ffffff"} 0%, transparent 100%)`
+            };
+
             return (
               <div key={_id} className="space-y-4">
                 {/* Top Section: Rank / Name / Logo */}
@@ -49,9 +53,7 @@ export default async function PowerRankingsPage() {
                   {/* Left Stripe */}
                   <div
                     className="absolute left-0 top-0 h-full w-3 sm:w-4 rounded-l-xl"
-                    style={{
-                      background: `linear-gradient(to right, ${teamColor || "#ffffff"} 0%, transparent 100%)`,
-                    }}
+                    style={gradientStyle}
                   />
 
                   {/* Rank */}

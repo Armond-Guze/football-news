@@ -2,7 +2,7 @@
 
 import { visionTool } from '@sanity/vision'
 import { defineConfig } from 'sanity'
-import { structureTool } from 'sanity/structure'
+import { deskTool } from 'sanity/desk'
 import { schemaTypes } from './sanity/schemaTypes'
 import powerRanking from './sanity/schemaTypes/powerRanking'
 
@@ -19,7 +19,7 @@ export default defineConfig({
     types: schemaTypes,
   },
   plugins: [
-    structureTool({ structure }),
+    deskTool({ structure }),
     visionTool({ defaultApiVersion: apiVersion }),
   ],
 })
