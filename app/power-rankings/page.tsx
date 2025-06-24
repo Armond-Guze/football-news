@@ -3,86 +3,138 @@ import { powerRankingsQuery } from "@sanity/lib/queries";
 import Image from "next/image";
 import { PortableText } from "@portabletext/react";
 import { urlFor } from "@sanity/lib/image";
+import styles from "./power-rankings.module.css";
 
 export const revalidate = 60;
 
+// Type definitions for better type safety
+interface PowerRankingTeam {
+  _id: string;
+  rank: number;
+  previousRank?: number;
+  teamColor?: string;
+  teamName: string;
+  teamLogo?: {
+    asset?: {
+      _ref: string;
+      _type: string;
+    };
+  };
+  summary?: string;
+  body?: any[];
+}
+
+interface MovementIndicator {
+  symbol: string;
+  color: string;
+}
+
+// Helper function to calculate team movement
+function getMovementIndicator(change: number): MovementIndicator {
+  if (change > 0) {
+    return { symbol: "▲", color: "text-green-400" };
+  } else if (change < 0) {
+    return { symbol: "▼", color: "text-red-500" };
+  } else {
+    return { symbol: "–", color: "text-gray-400" };
+  }
+}
+
 export default async function PowerRankingsPage() {
-  const rankings = await client.fetch(powerRankingsQuery);
+  try {
+    const rankings: PowerRankingTeam[] = await client.fetch(powerRankingsQuery);
 
-  return (
-<div className="px-4 py-16 sm:px-6 lg:px-12 bg-neutral-950 text-white">
-      <h1 className="text-5xl font-bold mb-14 text-center">NFL Power Rankings</h1>
+    // Handle empty state
+    if (!rankings || rankings.length === 0) {
+      return (
+        <div className="px-4 py-16 sm:px-6 lg:px-12 bg-neutral-950 text-white min-h-screen flex items-center justify-center">
+          <div className="text-center">
+            <h1 className="text-4xl font-bold mb-4">NFL Power Rankings</h1>
+            <p className="text-xl text-gray-400">No rankings available at this time.</p>
+          </div>
+        </div>
+      );
+    }
 
-      <div className="space-y-20 max-w-5xl mx-auto">
-        {rankings.map(
-          ({
-            _id,
-            rank,
-            previousRank,
-            teamColor,
-            teamName,
-            teamLogo,
-            summary,
-            body,
-          }) => {
-            const change = previousRank ? previousRank - rank : 0;
-            const movement =
-              change > 0
-                ? { symbol: "▲", color: "text-green-400" }
-                : change < 0
-                ? { symbol: "▼", color: "text-red-500" }
-                : { symbol: "–", color: "text-gray-400" };
+    return (
+      <div className="px-4 py-16 sm:px-6 lg:px-12 bg-neutral-950 text-white min-h-screen">
+        <header className="text-center mb-14">
+          <h1 className="text-5xl font-bold">NFL Power Rankings</h1>
+          <p className="text-lg text-gray-400 mt-4">
+            Latest rankings updated weekly • {rankings.length} teams
+          </p>
+        </header>
 
-            const faintBg = teamColor
-              ? `${teamColor}10`
-              : "#ffffff10";
-
-            const gradientStyle = {
-              background: `linear-gradient(to right, ${teamColor || "#ffffff"} 0%, transparent 100%)`
-            };
+        <div className="space-y-20 max-w-5xl mx-auto">
+          {rankings.map((team) => {
+          const { _id, rank, previousRank, teamColor, teamName, teamLogo, summary, body } = team;
+          const change = previousRank ? previousRank - rank : 0;
+          const movement = getMovementIndicator(change);
 
             return (
-              <div key={_id} className="space-y-4">
+              <article key={_id} className="space-y-4">
                 {/* Top Section: Rank / Name / Logo */}
                 <div
-                  className="relative rounded-xl px-6 py-5 sm:px-8 sm:py-6 flex items-center gap-4 sm:gap-6"
+                  className={`${styles.teamCard} ${styles.teamBackground} flex items-center gap-4 sm:gap-6`}
                   style={{
-                    backgroundColor: faintBg,
-                  }}
+                    // Using CSS custom properties for dynamic team colors - this is the recommended approach
+                    // for dynamic styling when values come from CMS/API data
+                    "--team-bg-color": teamColor ? `${teamColor}10` : "rgba(255, 255, 255, 0.06)",
+                    "--team-gradient": `linear-gradient(to right, ${teamColor || "#ffffff"} 0%, transparent 100%)`,
+                  } as React.CSSProperties}
+                  role="region"
+                  aria-labelledby={`team-${_id}-name`}
                 >
                   {/* Left Stripe */}
                   <div
-                    className="absolute left-0 top-0 h-full w-3 sm:w-4 rounded-l-xl"
-                    style={gradientStyle}
+                    className={`${styles.leftStripe} ${styles.teamStripe}`}
+                    aria-hidden="true"
                   />
 
                   {/* Rank */}
                   <div className="flex flex-col items-center min-w-[60px]">
-                    <span className="text-sm text-gray-300">Rank</span>
-                    <span className="text-4xl font-extrabold text-white">{rank}</span>
+                    <span className="text-sm text-gray-300" aria-label="Team rank">
+                      Rank
+                    </span>
+                    <span className="text-4xl font-extrabold text-white" aria-label={`Rank ${rank}`}>
+                      {rank}
+                    </span>
                   </div>
 
                   {/* Logo */}
                   {teamLogo?.asset && (
-                    <Image
-                      src={urlFor(teamLogo).url()}
-                      alt={teamName}
-                      width={64}
-                      height={64}
-                      className="rounded-full"
-                    />
+                    <div className="relative">
+                      <Image
+                        src={urlFor(teamLogo).url()}
+                        alt={`${teamName} logo`}
+                        width={64}
+                        height={64}
+                        className="rounded-full object-cover"
+                        priority={rank <= 5} // Prioritize top 5 teams
+                      />
+                    </div>
                   )}
 
                   {/* Team Name & Movement */}
                   <div className="flex-1 flex items-center justify-between">
-                    <h2 className="text-2xl sm:text-3xl font-semibold text-white">
+                    <h2 
+                      id={`team-${_id}-name`}
+                      className="text-2xl sm:text-3xl font-semibold text-white"
+                    >
                       {teamName}
                     </h2>
                     <div className="flex flex-col items-center justify-center min-w-[32px]">
                       <span
                         className={`text-xl font-semibold ${movement.color} ${
-                          change !== 0 ? "motion-safe:animate-soft-bounce" : ""
+                          change !== 0 ? "motion-safe:animate-pulse" : ""
                         }`}
+                        aria-label={
+                          change > 0 
+                            ? `Moved up ${Math.abs(change)} positions` 
+                            : change < 0 
+                            ? `Moved down ${Math.abs(change)} positions` 
+                            : "No change in position"
+                        }
                       >
                         {movement.symbol}
                       </span>
@@ -103,16 +155,26 @@ export default async function PowerRankingsPage() {
                     </p>
                   )}
                   {Array.isArray(body) && body.length > 0 && (
-                    <div className="text-lg sm:text-xl text-white leading-loose">
+                    <div className="text-lg sm:text-xl text-white leading-loose prose prose-invert max-w-none">
                       <PortableText value={body} />
                     </div>
                   )}
                 </div>
-              </div>
+              </article>
             );
-          }
-        )}
+          })}
+        </div>
       </div>
-    </div>
-  );
+    );
+  } catch (error) {
+    console.error('Error fetching power rankings:', error);
+    return (
+      <div className="px-4 py-16 sm:px-6 lg:px-12 bg-neutral-950 text-white min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold mb-4">NFL Power Rankings</h1>
+          <p className="text-xl text-red-400">Unable to load rankings. Please try again later.</p>
+        </div>
+      </div>
+    );
+  }
 }

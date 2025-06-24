@@ -1,0 +1,42 @@
+.teamCard {
+  position: relative;
+  border-radius: 0.75rem;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: all 0.3s ease;
+}
+
+.teamCard:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.leftStripe {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 0.75rem;
+  border-radius: 0.75rem 0 0 0.75rem;
+}
+
+/* Dynamic team color background - will be set via CSS custom properties */
+.teamBackground {
+  background-color: var(--team-bg-color, rgba(255, 255, 255, 0.06));
+}
+
+.teamStripe {
+  background: var(--team-gradient, linear-gradient(to right, #ffffff 0%, transparent 100%));
+}
+
+@media (min-width: 640px) {
+  .teamCard {
+    padding: 1.5rem 2rem;
+    gap: 1.5rem;
+  }
+  
+  .leftStripe {
+    width: 1rem;
+  }
+}
