@@ -18,7 +18,7 @@ export default function Home() {
           <Link href="/power-rankings" className="block group mx-auto max-w-5xl">
             <div className="relative w-full aspect-[16/9] rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-shadow duration-300">
               <Image
-                src="/images/lombardi-trophy.png" // Replace if different
+                src="/images/lombardi-trophy.png"
                 alt="Power Rankings Thumbnail"
                 fill
                 className="object-cover"

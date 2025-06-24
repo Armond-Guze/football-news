@@ -3,17 +3,18 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { client } from "@sanity/lib/client";
+import type { Headline, HeadlineListItem, HeadlinePageProps } from "@/types";
 
 export const dynamic = "force-dynamic";
 
-export default async function HeadlinePage(props) {
-  const params = await props?.params;
+export default async function HeadlinePage(props: HeadlinePageProps) {
+  const params = await props.params;
   if (!params?.slug) return notFound();
 
   const trimmedSlug = decodeURIComponent(params.slug).trim();
 
   const [headline, otherHeadlines] = await Promise.all([
-    client.fetch(
+    client.fetch<Headline>(
       `*[_type == "headline" && slug.current == $slug && published == true][0]{
         title,
         slug,
@@ -32,7 +33,7 @@ export default async function HeadlinePage(props) {
       }`,
       { slug: trimmedSlug }
     ),
-    client.fetch(
+    client.fetch<HeadlineListItem[]>(
       `*[_type == "headline" && published == true] | order(_createdAt desc)[0...6]{
         _id,
         title,
@@ -62,7 +63,7 @@ export default async function HeadlinePage(props) {
               <div className="relative w-8 h-8 rounded-full overflow-hidden">
                 <Image
                   src={headline.author.image.asset.url}
-                  alt={headline.author.name}
+                  alt={headline.author.name || "Author"}
                   fill
                   className="object-cover"
                 />
@@ -95,7 +96,7 @@ export default async function HeadlinePage(props) {
           {/* ✅ Body Text */}
           <section className="w-full flex justify-center">
             <div className="prose prose-invert text-white text-lg leading-relaxed max-w-2xl">
-              <PortableText value={headline.body} />
+              {headline.body && <PortableText value={headline.body} />}
             </div>
           </section>
         </article>

@@ -4,30 +4,9 @@ import Image from "next/image";
 import { PortableText } from "@portabletext/react";
 import { urlFor } from "@sanity/lib/image";
 import styles from "./power-rankings.module.css";
+import type { PowerRankingTeam, MovementIndicator } from "@/types";
 
 export const revalidate = 60;
-
-// Type definitions for better type safety
-interface PowerRankingTeam {
-  _id: string;
-  rank: number;
-  previousRank?: number;
-  teamColor?: string;
-  teamName: string;
-  teamLogo?: {
-    asset?: {
-      _ref: string;
-      _type: string;
-    };
-  };
-  summary?: string;
-  body?: any[];
-}
-
-interface MovementIndicator {
-  symbol: string;
-  color: string;
-}
 
 // Helper function to calculate team movement
 function getMovementIndicator(change: number): MovementIndicator {

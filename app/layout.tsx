@@ -1,5 +1,6 @@
 import { Poppins } from "next/font/google";
 import Script from "next/script";
+import type { Metadata } from "next";
 import "./globals.css";
 import LayoutWrapper from "./components/LayoutWrapper";
 import { Analytics } from "@vercel/analytics/react";
@@ -12,7 +13,7 @@ const poppins = Poppins({
   display: "swap",
 });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "The Game Snap – NFL News, Power Rankings & Quarterback Insights",
   description:
     "Stay updated with expert takes, weekly power rankings, draft analysis, and the latest headlines in pro football. The Game Snap delivers bold coverage for NFL fans.",
@@ -52,7 +53,11 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({ children }) {
+interface RootLayoutProps {
+  children: React.ReactNode;
+}
+
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" className={poppins.variable}>
       <head>

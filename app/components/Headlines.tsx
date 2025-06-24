@@ -1,11 +1,26 @@
-import { client } from "../../sanity/lib/client";
-import { headlineQuery } from "../../sanity/lib/queries";
-import { urlFor } from "../../sanity/lib/image";
+import { client } from "@sanity/lib/client";
+import { headlineQuery } from "@sanity/lib/queries";
+import { urlFor } from "@sanity/lib/image";
 import Link from "next/link";
 import Image from "next/image";
 
+interface Headline {
+  _id: string;
+  title: string;
+  slug?: {
+    current: string;
+  };
+  summary?: string;
+  coverImage?: {
+    asset?: {
+      _ref: string;
+      _type: string;
+    };
+  };
+}
+
 export default async function Headlines() {
-  const headlines = await client.fetch(headlineQuery);
+  const headlines: Headline[] = await client.fetch(headlineQuery);
 
   if (!headlines?.length) return null;
 
@@ -14,27 +29,29 @@ export default async function Headlines() {
 
   return (
     <section className="relative text-white py-16 px-6 lg:px-20 overflow-hidden z-0 min-h-[600px]">
-  {/* Background Image */}
-  <div className="absolute inset-0 -z-20">
-    <Image
-      src="/images/backgroundImage.jpeg"
-      alt="Black textured background"
-      fill
-      className="object-cover"
-    />
-  </div>
+      {/* Background Image */}
+      <div className="absolute inset-0 -z-20">
+        <Image
+          src="/images/backgroundImage.jpeg"
+          alt="Black textured background"
+          fill
+          className="object-cover"
+        />
+      </div>
 
-  {/* Slight black tint overlay */}
-  <div className="absolute inset-0 bg-black/30 -z-10" />
+      {/* Slight black tint overlay */}
+      <div className="absolute inset-0 bg-black/30 -z-10" />
 
       <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
         {/* Main Feature Story */}
         <div className="md:col-span-2 bg-black/80 rounded-xl overflow-hidden shadow-lg">
           {main?.coverImage && main?.slug?.current && (
             <Link href={`/headlines/${main.slug.current.trim()}`}>
-              <img
+              <Image
                 src={urlFor(main.coverImage).width(800).url()}
                 alt={main.title}
+                width={800}
+                height={450}
                 className="w-full aspect-video object-cover rounded shadow-lg transition hover:opacity-80"
               />
             </Link>
@@ -62,12 +79,14 @@ export default async function Headlines() {
                   <Link href={`/headlines/${headline.slug.current.trim()}`}>
                     <div className="flex items-start gap-3">
                       {headline.coverImage && (
-                        <img
+                        <Image
                           src={urlFor(headline.coverImage)
                             .width(80)
                             .height(50)
                             .url()}
                           alt={headline.title}
+                          width={80}
+                          height={50}
                           className="w-20 h-[50px] object-cover rounded-md flex-shrink-0"
                         />
                       )}
