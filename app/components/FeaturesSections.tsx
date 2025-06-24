@@ -17,27 +17,30 @@ export default function FeaturesSection() {
         />
       </div>
 
-      {/* Optional dark overlay to improve contrast */}
-      <div className="absolute inset-0 bg-black/50 -z-10" />
+      {/* Enhanced gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/70 -z-10" />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
+      <div className="relative z-10 mx-auto max-w-6xl px-6 lg:px-8">
+        <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-12 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-center">
           <div className="lg:pt-4 lg:pr-8">
             <div className="lg:max-w-lg">
-              <h2 className="text-base font-semibold leading-7 text-indigo-400">
-                The Best in the Game
-              </h2>
-              <p className="mt-2 text-4xl font-semibold tracking-tight text-white sm:text-5xl">
-                What Makes Elite QBs Unstoppable
+              <div className="flex items-center mb-6">
+                <div className="w-3 h-3 bg-indigo-500 rounded-full mr-3"></div>
+                <h2 className="text-base font-bold leading-7 text-indigo-400 uppercase tracking-wider">
+                  The Best in the Game
+                </h2>
+              </div>
+              <p className="mt-2 text-4xl font-bold tracking-tight text-white sm:text-5xl leading-tight">
+                What Makes Elite QBs <span className="bg-gradient-to-r from-indigo-400 to-blue-400 bg-clip-text text-transparent">Unstoppable</span>
               </p>
               <p className="mt-6 text-lg leading-8 text-slate-300">
                 Quarterbacks like Mahomes, Burrow, and Jackson aren&apos;t just athletes—they&apos;re playmakers, leaders, and culture-setters. Here&apos;s what sets them apart from the rest.
               </p>
               <dl className="mt-10 max-w-xl space-y-8 text-base leading-7 text-slate-300 lg:max-w-none">
-                <div className="relative pl-9">
-                  <dt className="inline font-semibold text-white">
+                <div className="relative pl-12 p-4 bg-white/5 rounded-xl backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-all duration-300 group">
+                  <dt className="inline font-bold text-white">
                     <svg
-                      className="absolute top-1 left-1 size-5 text-indigo-400"
+                      className="absolute top-5 left-4 size-6 text-indigo-400 group-hover:scale-110 transition-transform duration-300"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                       aria-hidden="true"
@@ -55,10 +58,10 @@ export default function FeaturesSection() {
                   </dd>
                 </div>
 
-                <div className="relative pl-9">
-                  <dt className="inline font-semibold text-white">
+                <div className="relative pl-12 p-4 bg-white/5 rounded-xl backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-all duration-300 group">
+                  <dt className="inline font-bold text-white">
                     <svg
-                      className="absolute top-1 left-1 size-5 text-indigo-400"
+                      className="absolute top-5 left-4 size-6 text-indigo-400 group-hover:scale-110 transition-transform duration-300"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                       aria-hidden="true"
@@ -76,10 +79,10 @@ export default function FeaturesSection() {
                   </dd>
                 </div>
 
-                <div className="relative pl-9">
-                  <dt className="inline font-semibold text-white">
+                <div className="relative pl-12 p-4 bg-white/5 rounded-xl backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-all duration-300 group">
+                  <dt className="inline font-bold text-white">
                     <svg
-                      className="absolute top-1 left-1 size-5 text-indigo-400"
+                      className="absolute top-5 left-4 size-6 text-indigo-400 group-hover:scale-110 transition-transform duration-300"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                       aria-hidden="true"
@@ -101,14 +104,17 @@ export default function FeaturesSection() {
             </div>
           </div>
 
-          {/* Right-side image */}
-          <Image
-            src="/images/helmet-background.png"
-            alt="Quarterback helmet and background"
-            className="w-full max-w-s rounded-lg shadow-md ring-1 ring-white/10"
-            width={1400}
-            height={1250}
-          />
+          {/* Right-side image with enhanced styling */}
+          <div className="relative">
+            <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-blue-500/20 rounded-2xl blur-xl"></div>
+            <Image
+              src="/images/helmet-background.png"
+              alt="Quarterback helmet and background"
+              className="relative w-full max-w-s rounded-2xl shadow-2xl ring-1 ring-white/20 hover:scale-105 transition-transform duration-500"
+              width={1400}
+              height={1250}
+            />
+          </div>
         </div>
       </div>
     </section>

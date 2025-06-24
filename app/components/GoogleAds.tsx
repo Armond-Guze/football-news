@@ -1,7 +1,7 @@
 'use client';
 import { useEffect } from 'react';
 
-// Extend Window interface to include adsbygoogle
+// Extend the Window interface to include adsbygoogle
 declare global {
   interface Window {
     adsbygoogle: any[];
@@ -21,10 +21,8 @@ export default function GoogleAds() {
   return (
     <>
       {/* Navbar Ad */}
-      <div className="w-full flex justify-center bg-background py-4">
-        <ins
-          className="adsbygoogle"
-          style={{ display: 'block', width: '100%', height: '90px' }}
+      <div className="w-full flex justify-center bg-background py-4">        <ins
+          className="adsbygoogle block w-full h-[90px]"
           data-ad-client="ca-pub-7706858365277925"
           data-ad-slot="8764188470"
           data-ad-format="auto"
@@ -33,10 +31,8 @@ export default function GoogleAds() {
       </div>
 
       {/* Footer Ad */}
-      <div className="w-full flex justify-center bg-background py-4">
-        <ins
-          className="adsbygoogle"
-          style={{ display: 'block', width: '100%', height: '90px' }}
+      <div className="w-full flex justify-center bg-background py-4">        <ins
+          className="adsbygoogle block w-full h-[90px]"
           data-ad-client="ca-pub-7706858365277925"
           data-ad-slot="6943307518"
           data-ad-format="auto"

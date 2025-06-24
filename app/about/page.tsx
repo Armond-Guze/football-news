@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-background text-white px-6 py-24 sm:py-32 lg:px-8">
-      <div className="mx-auto max-w-4xl">
+      <div className="mx-auto max-w-3xl">
         <header className="text-center mb-16">
           <h1 className="text-4xl font-bold tracking-tight text-indigo-400 sm:text-5xl lg:text-6xl">
             About The Snap
