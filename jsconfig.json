@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@sanity/*": ["sanity/*"]  // ✅ remove the extra "lib"
+      "@sanity/*": ["sanity/lib*"]  // ✅ remove the extra "lib"
     }
   }
 }

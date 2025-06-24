@@ -1,9 +1,8 @@
-import { client } from "../../../sanity/lib/client";
-import { urlFor } from "../../../sanity/lib/image";
 import { PortableText } from "@portabletext/react";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
+import { client } from "@sanity/lib/client";
 
 export const dynamic = "force-dynamic";
 
@@ -60,11 +59,14 @@ export default async function HeadlinePage(props) {
 
           <div className="text-sm text-gray-400 mb-6 flex items-center gap-3">
             {headline.author?.image?.asset?.url && (
-              <img
-                src={headline.author.image.asset.url}
-                alt={headline.author.name}
-                className="w-8 h-8 rounded-full object-cover"
-              />
+              <div className="relative w-8 h-8 rounded-full overflow-hidden">
+                <Image
+                  src={headline.author.image.asset.url}
+                  alt={headline.author.name}
+                  fill
+                  className="object-cover"
+                />
+              </div>
             )}
             <span>
               By {headline.author?.name || "Unknown"} •{" "}
@@ -80,10 +82,11 @@ export default async function HeadlinePage(props) {
           {headline.coverImage?.asset?.url && (
             <div className="w-full flex justify-center mb-8">
               <div className="relative w-full max-w-3xl h-[320px] overflow-hidden rounded-md border border-slate-700 shadow-sm">
-                <img
+                <Image
                   src={headline.coverImage.asset.url}
                   alt={headline.title}
-                  className="w-full h-full object-cover object-center"
+                  fill
+                  className="object-cover object-center"
                 />
               </div>
             </div>

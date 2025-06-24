@@ -1,8 +1,8 @@
-import { client } from "../../sanity/lib/client";
-import { powerRankingsQuery } from "../../sanity/lib/queries";
+import { client } from "@sanity/lib/client";
+import { powerRankingsQuery } from "@sanity/lib/queries";
 import Image from "next/image";
 import { PortableText } from "@portabletext/react";
-import { urlFor } from "../../sanity/lib/image";
+import { urlFor } from "@sanity/lib/image";
 
 export const revalidate = 60;
 
