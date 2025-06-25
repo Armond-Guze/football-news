@@ -27,9 +27,7 @@ export default async function Headlines() {
   const sidebar = headlines.slice(1);
 
   return (
-    <section className="relative py-24 px-6 lg:px-8 bg-transparent">
-      <div className="absolute inset-0 bg-gradient-to-b from-gray-900/40 via-transparent to-gray-900/40"></div>
-      
+    <section className="relative py-24 px-6 lg:px-8 bg-black">
       <div className="relative mx-auto max-w-6xl">
         {/* Section Header */}
         <div className="text-center mb-16">
@@ -42,7 +40,7 @@ export default async function Headlines() {
           </p>
         </div>        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Main Feature Story */}
-          <div className="lg:col-span-2 bg-gray-900/40 backdrop-blur-sm border border-gray-800/50 rounded-2xl overflow-hidden hover:bg-gray-900/60 transition-all duration-300 group">
+          <div className="lg:col-span-2 bg-gray-900 border border-gray-800 rounded-2xl overflow-hidden hover:bg-gray-800 transition-all duration-300 group">
             {main?.coverImage && main?.slug?.current && (
               <Link href={`/headlines/${main.slug.current.trim()}`}>
                 <div className="relative aspect-video overflow-hidden">
@@ -53,7 +51,6 @@ export default async function Headlines() {
                     height={450}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                 </div>
               </Link>
             )}
@@ -73,7 +70,7 @@ export default async function Headlines() {
           </div>
 
           {/* Sidebar Headlines */}
-          <div className="bg-gray-900/40 backdrop-blur-sm border border-gray-800/50 rounded-2xl p-8">
+          <div className="bg-gray-900 border border-gray-800 rounded-2xl p-8">
             <div className="flex items-center mb-6">
               <div className="w-3 h-3 bg-white rounded-full mr-3"></div>
               <h3 className="text-xl font-bold text-white">

@@ -4,9 +4,7 @@ import Image from "next/image";
 
 export default function FeaturesSection() {
   return (
-    <section className="relative py-24 sm:py-32 bg-transparent">
-      <div className="absolute inset-0 bg-gradient-to-r from-gray-900/20 via-transparent to-gray-900/20"></div>
-
+    <section className="relative py-24 sm:py-32 bg-black">
       <div className="relative mx-auto max-w-6xl px-6 lg:px-8">
         <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-12 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-center">
           <div className="lg:pt-4 lg:pr-8">
@@ -24,7 +22,7 @@ export default function FeaturesSection() {
                 Quarterbacks like Mahomes, Burrow, and Jackson aren&apos;t just athletes—they&apos;re playmakers, leaders, and culture-setters. Here&apos;s what sets them apart from the rest.
               </p>
               <dl className="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-300 lg:max-w-none">
-                <div className="relative pl-12 p-4 bg-gray-900/50 rounded-xl backdrop-blur-sm border border-gray-800 hover:bg-gray-900/70 transition-all duration-300 group">
+                <div className="relative pl-12 p-4 bg-gray-900 rounded-xl border border-gray-800 hover:bg-gray-800 transition-all duration-300 group">
                   <dt className="inline font-bold text-white">
                     <svg
                       className="absolute top-5 left-4 size-6 text-white group-hover:scale-110 transition-transform duration-300"
@@ -45,7 +43,7 @@ export default function FeaturesSection() {
                   </dd>
                 </div>
 
-                <div className="relative pl-12 p-4 bg-gray-900/50 rounded-xl backdrop-blur-sm border border-gray-800 hover:bg-gray-900/70 transition-all duration-300 group">
+                <div className="relative pl-12 p-4 bg-gray-900 rounded-xl border border-gray-800 hover:bg-gray-800 transition-all duration-300 group">
                   <dt className="inline font-bold text-white">
                     <svg
                       className="absolute top-5 left-4 size-6 text-white group-hover:scale-110 transition-transform duration-300"
@@ -66,7 +64,7 @@ export default function FeaturesSection() {
                   </dd>
                 </div>
 
-                <div className="relative pl-12 p-4 bg-gray-900/50 rounded-xl backdrop-blur-sm border border-gray-800 hover:bg-gray-900/70 transition-all duration-300 group">
+                <div className="relative pl-12 p-4 bg-gray-900 rounded-xl border border-gray-800 hover:bg-gray-800 transition-all duration-300 group">
                   <dt className="inline font-bold text-white">
                     <svg
                       className="absolute top-5 left-4 size-6 text-white group-hover:scale-110 transition-transform duration-300"
@@ -93,7 +91,6 @@ export default function FeaturesSection() {
 
           {/* Right-side image with enhanced styling */}
           <div className="relative">
-            <div className="absolute inset-0 bg-gray-800/20 rounded-2xl blur-xl"></div>
             <Image
               src="/images/helmet-background.png"
               alt="Quarterback helmet and background"

@@ -6,8 +6,8 @@ import BentoGrid from "./components/BentoGrid";
 export default function Home() {
   return (
     <>
-      {/* Main content container that flows seamlessly with navbar/footer */}
-      <div className="bg-gradient-to-b from-black via-gray-900 to-black min-h-screen text-white">
+      {/* Main content container with black background */}
+      <div className="bg-black min-h-screen text-white">
         {/* Headlines section */}
         <Headlines />
 

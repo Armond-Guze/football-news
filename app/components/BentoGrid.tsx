@@ -32,9 +32,7 @@ export default async function BentoGrid() {
   const topTeams = powerRankings?.slice(0, 3) || [];
 
   return (
-    <section className="relative py-24 px-6 lg:px-8 bg-transparent">
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-900/30 to-transparent"></div>
-      
+    <section className="relative py-24 px-6 lg:px-8 bg-black">
       <div className="relative mx-auto max-w-7xl">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
@@ -51,7 +49,7 @@ export default async function BentoGrid() {
           
           {/* Large Power Rankings Card */}
           <Link href="/power-rankings" className="md:col-span-2 lg:col-span-3 md:row-span-2 group">
-            <div className="relative h-full min-h-[350px] rounded-3xl overflow-hidden bg-gray-900/40 backdrop-blur-sm border border-gray-800/50 hover:bg-gray-900/60 transition-all duration-500 hover:scale-[1.02] shadow-2xl">
+            <div className="relative h-full min-h-[350px] rounded-3xl overflow-hidden bg-gray-900 border border-gray-800 hover:bg-gray-800 transition-all duration-500 hover:scale-[1.02] shadow-2xl">
             <Image
               src="/images/lombardi-trophy.png"
               alt="Power Rankings"
@@ -59,11 +57,10 @@ export default async function BentoGrid() {
               className="object-cover opacity-40 group-hover:opacity-50 group-hover:scale-105 transition-all duration-700"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
             
             <div className="relative h-full flex flex-col justify-between p-8">
               <div className="flex items-start justify-between">
-                <div className="inline-flex items-center px-4 py-2 bg-gray-800 rounded-full backdrop-blur-sm border border-gray-700">
+                <div className="inline-flex items-center px-4 py-2 bg-gray-800 rounded-full border border-gray-700">
                   <div className="w-2 h-2 bg-white rounded-full mr-2"></div>
                   <span className="text-white text-sm font-semibold">Live Rankings</span>
                 </div>
@@ -116,7 +113,7 @@ export default async function BentoGrid() {
         {/* Featured Headline */}
         {featuredHeadline?.slug?.current ? (
           <Link href={`/headlines/${featuredHeadline.slug.current}`} className="md:col-span-2 lg:col-span-3 group">
-            <div className="relative h-full min-h-[350px] rounded-3xl overflow-hidden bg-gray-900/40 backdrop-blur-sm border border-gray-800/50 hover:bg-gray-900/60 transition-all duration-500 hover:scale-[1.02] shadow-xl">
+            <div className="relative h-full min-h-[350px] rounded-3xl overflow-hidden bg-gray-900 border border-gray-800 hover:bg-gray-800 transition-all duration-500 hover:scale-[1.02] shadow-xl">
               {featuredHeadline.coverImage?.asset ? (
                 <Image
                   src={urlFor(featuredHeadline.coverImage).width(600).url()}
@@ -125,13 +122,12 @@ export default async function BentoGrid() {
                   className="object-cover opacity-60 group-hover:opacity-70 group-hover:scale-105 transition-all duration-700"
                 />
               ) : (
-                <div className="absolute inset-0 bg-gradient-to-br from-gray-800/60 to-gray-900/60" />
+                <div className="absolute inset-0 bg-gray-800" />
               )}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
               
               <div className="relative h-full flex flex-col justify-between p-6">
                 <div className="flex items-start justify-between">
-                  <div className="inline-flex items-center px-3 py-1 bg-gray-800 rounded-full backdrop-blur-sm border border-gray-700">
+                  <div className="inline-flex items-center px-3 py-1 bg-gray-800 rounded-full border border-gray-700">
                     <div className="w-2 h-2 bg-white rounded-full mr-2"></div>
                     <span className="text-white text-xs font-semibold uppercase tracking-wider">Featured</span>
                   </div>
@@ -154,18 +150,17 @@ export default async function BentoGrid() {
             </div>          </Link>
         ) : (
           <Link href="/headlines" className="md:col-span-2 lg:col-span-3 group">
-            <div className="relative h-full min-h-[350px] rounded-3xl overflow-hidden bg-gray-900/40 backdrop-blur-sm border border-gray-800/50 hover:bg-gray-900/60 transition-all duration-500 hover:scale-[1.02] shadow-xl">
+            <div className="relative h-full min-h-[350px] rounded-3xl overflow-hidden bg-gray-900 border border-gray-800 hover:bg-gray-800 transition-all duration-500 hover:scale-[1.02] shadow-xl">
               <Image
                 src="/images/jalen-hurts.png"
                 alt="Featured News"
                 fill
                 className="object-cover opacity-60 group-hover:opacity-70 group-hover:scale-105 transition-all duration-700"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
               
               <div className="relative h-full flex flex-col justify-between p-6">
                 <div className="flex items-start justify-between">
-                  <div className="inline-flex items-center px-3 py-1 bg-gray-800 rounded-full backdrop-blur-sm border border-gray-700">
+                  <div className="inline-flex items-center px-3 py-1 bg-gray-800 rounded-full border border-gray-700">
                     <div className="w-2 h-2 bg-white rounded-full mr-2"></div>
                     <span className="text-white text-xs font-semibold uppercase tracking-wider">Breaking</span>
                   </div>
@@ -195,7 +190,7 @@ export default async function BentoGrid() {
               href={headline.slug?.current ? `/headlines/${headline.slug.current}` : '/headlines'} 
               className="md:col-span-2 lg:col-span-2 group"
             >
-              <div className="relative h-full min-h-[160px] rounded-2xl overflow-hidden bg-gray-900/40 backdrop-blur-sm border border-gray-800/50 hover:bg-gray-900/60 transition-all duration-500 hover:scale-[1.02] shadow-lg">
+              <div className="relative h-full min-h-[160px] rounded-2xl overflow-hidden bg-gray-900 border border-gray-800 hover:bg-gray-800 transition-all duration-500 hover:scale-[1.02] shadow-lg">
                 {headline.coverImage?.asset ? (
                   <Image
                     src={urlFor(headline.coverImage).width(400).url()}
@@ -204,13 +199,12 @@ export default async function BentoGrid() {
                     className="object-cover opacity-50 group-hover:opacity-60 transition-all duration-500"
                   />
                 ) : (
-                  <div className="absolute inset-0 bg-gradient-to-br from-gray-800/60 to-gray-900/60" />
+                  <div className="absolute inset-0 bg-gray-800" />
                 )}
-                <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent" />
                 
                 <div className="relative h-full flex items-end p-4">
                   <div>
-                    <div className="inline-flex items-center px-2 py-1 bg-gray-800 rounded-md backdrop-blur-sm border border-gray-700 mb-2">
+                    <div className="inline-flex items-center px-2 py-1 bg-gray-800 rounded-md border border-gray-700 mb-2">
                       <span className="text-white text-xs font-semibold">News</span>
                     </div>
                     <h3 className="text-sm lg:text-base font-bold text-white line-clamp-2 group-hover:text-gray-300 transition-colors duration-300">
@@ -224,18 +218,17 @@ export default async function BentoGrid() {
         ) : (
           <>
             <Link href="/headlines" className="md:col-span-2 lg:col-span-2 group">
-              <div className="relative h-full min-h-[160px] rounded-2xl overflow-hidden bg-gray-900/40 backdrop-blur-sm border border-gray-800/50 hover:bg-gray-900/60 transition-all duration-500 hover:scale-[1.02] shadow-lg">
+              <div className="relative h-full min-h-[160px] rounded-2xl overflow-hidden bg-gray-900 border border-gray-800 hover:bg-gray-800 transition-all duration-500 hover:scale-[1.02] shadow-lg">
                 <Image
                   src="/images/patrick-mahomes.png"
                   alt="Player Analysis"
                   fill
                   className="object-cover opacity-50 group-hover:opacity-60 transition-all duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent" />
                 
                 <div className="relative h-full flex items-end p-4">
                   <div>
-                    <div className="inline-flex items-center px-2 py-1 bg-gray-800 rounded-md backdrop-blur-sm border border-gray-700 mb-2">
+                    <div className="inline-flex items-center px-2 py-1 bg-gray-800 rounded-md border border-gray-700 mb-2">
                       <span className="text-white text-xs font-semibold">Analysis</span>
                     </div>
                     <h3 className="text-lg font-bold text-white group-hover:text-gray-300 transition-colors duration-300">
@@ -247,18 +240,17 @@ export default async function BentoGrid() {
             </Link>
 
             <Link href="/about" className="md:col-span-2 lg:col-span-2 group">
-              <div className="relative h-full min-h-[160px] rounded-2xl overflow-hidden bg-gray-900/40 backdrop-blur-sm border border-gray-800/50 hover:bg-gray-900/60 transition-all duration-500 hover:scale-[1.02] shadow-lg">
+              <div className="relative h-full min-h-[160px] rounded-2xl overflow-hidden bg-gray-900 border border-gray-800 hover:bg-gray-800 transition-all duration-500 hover:scale-[1.02] shadow-lg">
                 <Image
                   src="/images/josh-allen.png"
                   alt="Draft Analysis"
                   fill
                   className="object-cover opacity-50 group-hover:opacity-60 transition-all duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent" />
                 
                 <div className="relative h-full flex items-end p-4">
                   <div>
-                    <div className="inline-flex items-center px-2 py-1 bg-gray-800 rounded-md backdrop-blur-sm border border-gray-700 mb-2">
+                    <div className="inline-flex items-center px-2 py-1 bg-gray-800 rounded-md border border-gray-700 mb-2">
                       <span className="text-white text-xs font-semibold">Draft</span>
                     </div>
                     <h3 className="text-lg font-bold text-white group-hover:text-gray-300 transition-colors duration-300">
@@ -270,18 +262,17 @@ export default async function BentoGrid() {
             </Link>
 
             <Link href="/headlines" className="md:col-span-2 lg:col-span-2 group">
-              <div className="relative h-full min-h-[160px] rounded-2xl overflow-hidden bg-gray-900/40 backdrop-blur-sm border border-gray-800/50 hover:bg-gray-900/60 transition-all duration-500 hover:scale-[1.02] shadow-lg">
+              <div className="relative h-full min-h-[160px] rounded-2xl overflow-hidden bg-gray-900 border border-gray-800 hover:bg-gray-800 transition-all duration-500 hover:scale-[1.02] shadow-lg">
                 <Image
                   src="/images/lamar-jackson.png"
                   alt="Game Recaps"
                   fill
                   className="object-cover opacity-50 group-hover:opacity-60 transition-all duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent" />
                 
                 <div className="relative h-full flex items-end p-4">
                   <div>
-                    <div className="inline-flex items-center px-2 py-1 bg-gray-800 rounded-md backdrop-blur-sm border border-gray-700 mb-2">
+                    <div className="inline-flex items-center px-2 py-1 bg-gray-800 rounded-md border border-gray-700 mb-2">
                       <span className="text-white text-xs font-semibold">Recaps</span>
                     </div>
                     <h3 className="text-lg font-bold text-white group-hover:text-gray-300 transition-colors duration-300">

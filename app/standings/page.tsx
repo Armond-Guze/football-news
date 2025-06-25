@@ -113,7 +113,7 @@ export default function StandingsPage() {
 
   if (loading) {
     return (
-      <div className="bg-gradient-to-b from-black via-gray-900 to-black min-h-screen text-white flex items-center justify-center">
+      <div className="bg-gray-950 min-h-screen text-white flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
           <p className="text-gray-300">Loading standings...</p>
@@ -123,11 +123,9 @@ export default function StandingsPage() {
   }
 
   return (
-    <div className="bg-gradient-to-b from-black via-gray-900 to-black min-h-screen text-white">
+    <div className="bg-gray-950 min-h-screen text-white">
       {/* Hero Section */}
-      <section className="relative py-24 px-6 lg:px-8 bg-transparent">
-        <div className="absolute inset-0 bg-gradient-to-b from-gray-900/40 via-transparent to-gray-900/40"></div>
-        
+      <section className="relative py-24 px-6 lg:px-8">
         <div className="relative mx-auto max-w-7xl">
           <div className="text-center mb-16">
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
@@ -201,32 +199,32 @@ export default function StandingsPage() {
           
           {/* AFC Conference */}
           <div className="mb-16">
-            <h2 className="text-3xl font-bold text-white mb-8 text-center">
+            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
               American Football Conference (AFC)
             </h2>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {divisions.slice(0, 4).map(division => (
-                <div key={division} className="bg-gray-900/40 backdrop-blur-sm border border-gray-800/50 rounded-2xl overflow-hidden">
-                  <div className="bg-gray-800/50 px-6 py-4 border-b border-gray-700/50">
-                    <h3 className="text-xl font-bold text-white">{division}</h3>
+                <div key={division} className="bg-white border border-gray-300 rounded-2xl overflow-hidden shadow-lg">
+                  <div className="bg-gray-100 px-6 py-4 border-b border-gray-300">
+                    <h3 className="text-xl font-bold text-gray-900">{division}</h3>
                   </div>
                   
                   <div className="overflow-x-auto">
                     <table className="w-full">
                       <thead>
-                        <tr className="bg-gray-800/30">
-                          <th className="px-4 py-3 text-left text-sm font-semibold text-gray-300">Team</th>
-                          <th className="px-4 py-3 text-center text-sm font-semibold text-gray-300">W</th>
-                          <th className="px-4 py-3 text-center text-sm font-semibold text-gray-300">L</th>
-                          <th className="px-4 py-3 text-center text-sm font-semibold text-gray-300">Win %</th>
+                        <tr className="bg-gray-50">
+                          <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">Team</th>
+                          <th className="px-4 py-3 text-center text-sm font-semibold text-gray-700">W</th>
+                          <th className="px-4 py-3 text-center text-sm font-semibold text-gray-700">L</th>
+                          <th className="px-4 py-3 text-center text-sm font-semibold text-gray-700">Win %</th>
                         </tr>
                       </thead>
                       <tbody>
                         {standingsByDivision[division]?.map((team, index) => (
                           <tr 
                             key={team._id} 
-                            className={`border-b border-gray-700/30 hover:bg-gray-800/20 transition-colors ${
-                              index === 0 ? 'bg-green-900/10' : ''
+                            className={`border-b border-gray-200 hover:bg-gray-50 transition-colors ${
+                              index === 0 ? 'bg-green-50' : ''
                             }`}
                           >
                             <td className="px-4 py-4">
@@ -281,32 +279,32 @@ export default function StandingsPage() {
 
           {/* NFC Conference */}
           <div>
-            <h2 className="text-3xl font-bold text-white mb-8 text-center">
+            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
               National Football Conference (NFC)
             </h2>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {divisions.slice(4, 8).map(division => (
-                <div key={division} className="bg-gray-900/40 backdrop-blur-sm border border-gray-800/50 rounded-2xl overflow-hidden">
-                  <div className="bg-gray-800/50 px-6 py-4 border-b border-gray-700/50">
-                    <h3 className="text-xl font-bold text-white">{division}</h3>
+                <div key={division} className="bg-white border border-gray-300 rounded-2xl overflow-hidden shadow-lg">
+                  <div className="bg-gray-100 px-6 py-4 border-b border-gray-300">
+                    <h3 className="text-xl font-bold text-gray-900">{division}</h3>
                   </div>
                   
                   <div className="overflow-x-auto">
                     <table className="w-full">
                       <thead>
-                        <tr className="bg-gray-800/30">
-                          <th className="px-4 py-3 text-left text-sm font-semibold text-gray-300">Team</th>
-                          <th className="px-4 py-3 text-center text-sm font-semibold text-gray-300">W</th>
-                          <th className="px-4 py-3 text-center text-sm font-semibold text-gray-300">L</th>
-                          <th className="px-4 py-3 text-center text-sm font-semibold text-gray-300">Win %</th>
+                        <tr className="bg-gray-50">
+                          <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">Team</th>
+                          <th className="px-4 py-3 text-center text-sm font-semibold text-gray-700">W</th>
+                          <th className="px-4 py-3 text-center text-sm font-semibold text-gray-700">L</th>
+                          <th className="px-4 py-3 text-center text-sm font-semibold text-gray-700">Win %</th>
                         </tr>
                       </thead>
                       <tbody>
                         {standingsByDivision[division]?.map((team, index) => (
                           <tr 
                             key={team._id} 
-                            className={`border-b border-gray-700/30 hover:bg-gray-800/20 transition-colors ${
-                              index === 0 ? 'bg-green-900/10' : ''
+                            className={`border-b border-gray-200 hover:bg-gray-50 transition-colors ${
+                              index === 0 ? 'bg-green-50' : ''
                             }`}
                           >
                             <td className="px-4 py-4">

@@ -1,27 +1,7 @@
 @import "tailwindcss";
 
-:root {
-  --background: #18181b; /* changed from #ffffff */
-  --foreground: #ededed; /* optional: lighter text for contrast */
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-/* Optional: tweak for dark mode users — you can remove this if you're forcing dark */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #18181b; /* same as above */
-    --foreground: #ededed;
-  }
-}
-
-
 body {
-  background-color: theme('colors.background');
-  color: theme('colors.foreground');
+  background-color: #000000;
+  color: #ffffff;
+  font-family: system-ui, -apple-system, sans-serif;
 }

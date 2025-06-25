@@ -20,21 +20,8 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative text-gray-100 py-16 border-t border-gray-800 overflow-hidden bg-gradient-to-b from-black via-gray-900 to-black">
-      {/* Background image layer */}
-      <div className="absolute inset-0 -z-20">
-        <Image
-          src="/images/backgroundImage.jpeg"
-          alt="Footer texture background"
-          fill
-          className="object-cover opacity-30"
-        />
-      </div>
-
-      {/* Gradient overlay for consistency */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-gray-900/40 to-black/40 -z-10" />
-
-      <div className="relative z-10 max-w-7xl mx-auto px-6">
+    <footer className="bg-black border-t border-gray-800 py-16 text-white">
+      <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand Section */}
           <div className="lg:col-span-2">
@@ -46,18 +33,18 @@ const Footer = () => {
                 height={48}
                 className="h-12 w-auto"
               />
-              <h3 className="text-2xl font-bold text-indigo-400">
+              <h3 className="text-2xl font-bold text-white">
                 The Game Snap
               </h3>
             </div>
-            <p className="text-gray-400 mb-6 max-w-md leading-relaxed">
+            <p className="text-gray-300 mb-6 max-w-md leading-relaxed">
               Your premier destination for NFL insights, power rankings, and breaking news. 
               Stay ahead of the game with expert analysis and comprehensive coverage.
             </p>
             <div className="flex items-center space-x-4">
               <a
                 href="mailto:TheGameSnap@yahoo.com"
-                className="flex items-center space-x-2 text-gray-400 hover:text-indigo-400 transition-colors group"
+                className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors group"
               >
                 <Mail size={18} className="group-hover:scale-110 transition-transform" />
                 <span className="text-sm">TheGameSnap@yahoo.com</span>
@@ -67,7 +54,7 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-semibold text-indigo-400 mb-6">
+            <h4 className="text-lg font-semibold text-white mb-6">
               Quick Links
             </h4>
             <ul className="space-y-3">
@@ -75,7 +62,7 @@ const Footer = () => {
                 <li key={label}>
                   <Link
                     href={href}
-                    className="text-gray-400 hover:text-indigo-400 transition-colors text-sm font-medium group flex items-center"
+                    className="text-gray-300 hover:text-white transition-colors text-sm font-medium group flex items-center"
                   >
                     <span className="group-hover:translate-x-1 transition-transform">
                       {label}
@@ -89,18 +76,18 @@ const Footer = () => {
 
           {/* Legal & Social */}
           <div>
-            <h4 className="text-lg font-semibold text-indigo-400 mb-6">
+            <h4 className="text-lg font-semibold text-white mb-6">
               Connect & Legal
             </h4>
             <div className="space-y-6">
               {/* Social Links */}
               <div>
-                <h5 className="text-sm font-medium text-gray-300 mb-3">Follow Us</h5>
+                <h5 className="text-sm font-medium text-gray-200 mb-3">Follow Us</h5>
                 <a
                   href="https://www.instagram.com/thegamesnap"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center space-x-2 text-gray-400 hover:text-indigo-400 transition-colors group"
+                  className="inline-flex items-center space-x-2 text-gray-300 hover:text-white transition-colors group"
                 >
                   <Instagram size={18} className="group-hover:scale-110 transition-transform" />
                   <span className="text-sm font-medium">Instagram</span>
@@ -109,13 +96,13 @@ const Footer = () => {
 
               {/* Legal Links */}
               <div>
-                <h5 className="text-sm font-medium text-gray-300 mb-3">Legal</h5>
+                <h5 className="text-sm font-medium text-gray-200 mb-3">Legal</h5>
                 <ul className="space-y-2">
                   {legalLinks.map(({ label, href }) => (
                     <li key={label}>
                       <Link
                         href={href}
-                        className="text-gray-400 hover:text-indigo-400 transition-colors text-sm"
+                        className="text-gray-300 hover:text-white transition-colors text-sm"
                       >
                         {label}
                       </Link>
@@ -130,10 +117,10 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="mt-16 pt-8 border-t border-gray-800">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="text-sm text-gray-500">
+            <div className="text-sm text-gray-400">
               &copy; {currentYear} The Game Snap. All rights reserved.
             </div>
-            <div className="text-sm text-gray-500">
+            <div className="text-sm text-gray-400">
               Made with ⚡ for NFL fans everywhere
             </div>
           </div>
