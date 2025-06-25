@@ -40,13 +40,14 @@ export default async function PowerRankingsPage() {
     return (
       <div className="px-4 py-16 sm:px-6 lg:px-12 bg-neutral-950 text-white min-h-screen">
         <header className="text-center mb-16 relative">
-          <h1 className="text-5xl md:text-6xl font-extrabold text-white">
+          <div className="absolute inset-0 bg-gradient-to-b from-indigo-600/20 to-transparent rounded-xl -z-10" />
+          <h1 className="text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-indigo-400 to-blue-400 bg-clip-text text-transparent">
             NFL Power Rankings
           </h1>
           <p className="text-xl text-gray-300 mt-6 font-medium">
             Latest rankings updated weekly • {rankings.length} teams
           </p>
-          <div className="mt-4 inline-flex items-center px-4 py-2 bg-gray-800 rounded-full border border-gray-600">
+          <div className="mt-4 inline-flex items-center px-4 py-2 bg-indigo-600/20 rounded-full border border-indigo-500/30">
             <div className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse" />
             <span className="text-sm text-green-400 font-semibold">Live Rankings</span>
           </div>
@@ -62,13 +63,20 @@ export default async function PowerRankingsPage() {
               <article key={_id} className="group hover:scale-[1.02] transition-all duration-300">
                 {/* Enhanced Card with Glass Effect */}
                 <div
-                  className="relative bg-gray-900 border border-gray-800 shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center gap-6 p-6 rounded-2xl hover:bg-gray-800"
+                  className={`${styles.teamCard} ${styles.teamBackground} relative backdrop-blur-sm border border-white/10 shadow-xl hover:shadow-2xl transition-all duration-300 flex items-center gap-6`}
+                  style={{
+                    "--team-bg-color": teamColor ? `${teamColor}15` : "rgba(255, 255, 255, 0.08)",
+                    "--team-gradient": `linear-gradient(135deg, ${teamColor || "#6366f1"} 0%, ${teamColor || "#8b5cf6"} 100%)`,
+                  } as React.CSSProperties}
                   role="region"
                   aria-labelledby={`team-${_id}-name`}
                 >
-                  {/* Left Border */}
+                  {/* Enhanced Left Stripe with Glow */}
                   <div
-                    className="absolute left-0 top-0 bottom-0 w-1 rounded-l-2xl bg-white"
+                    className={`${styles.leftStripe} ${styles.teamStripe} shadow-lg`}
+                    style={{
+                      boxShadow: `0 0 20px ${teamColor || "#6366f1"}40`,
+                    } as React.CSSProperties}
                     aria-hidden="true"
                   />
 
@@ -97,12 +105,13 @@ export default async function PowerRankingsPage() {
                   {/* Enhanced Logo */}
                   {teamLogo?.asset && (
                     <div className="relative">
+                      <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-full" />
                       <Image
                         src={urlFor(teamLogo).url()}
                         alt={`${teamName} logo`}
                         width={72}
                         height={72}
-                        className="rounded-full object-cover ring-2 ring-gray-600 shadow-lg relative z-10"
+                        className="rounded-full object-cover ring-2 ring-white/20 shadow-lg relative z-10"
                         priority={rank <= 5}
                       />
                     </div>
@@ -112,7 +121,7 @@ export default async function PowerRankingsPage() {
                   <div className="flex-1 flex items-center justify-between">
                     <h2 
                       id={`team-${_id}-name`}
-                      className="text-2xl sm:text-3xl font-bold text-white group-hover:text-gray-300 transition-colors"
+                      className="text-2xl sm:text-3xl font-bold text-white group-hover:text-indigo-300 transition-colors"
                     >
                       {teamName}
                     </h2>

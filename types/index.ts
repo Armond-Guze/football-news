@@ -57,6 +57,8 @@ export interface Headline {
   body?: any[]; // PortableText
   author?: Author;
   coverImage?: SanityImageWithUrl;
+  category?: Category;
+  tags?: Pick<Tag, 'title' | 'slug'>[];
   published?: boolean;
   _createdAt: string;
   _updatedAt: string;
@@ -70,6 +72,8 @@ export interface HeadlineListItem {
   summary?: string;
   date: string;
   author?: Pick<Author, 'name'>;
+  category?: Pick<Category, 'title' | 'slug' | 'color'>;
+  tags?: Pick<Tag, 'title'>[];
 }
 
 // Category types
@@ -78,6 +82,17 @@ export interface Category {
   title: string;
   slug: SanitySlug;
   description?: string;
+  color?: string;
+  priority?: number;
+}
+
+// Tag types
+export interface Tag {
+  _id: string;
+  title: string;
+  slug: SanitySlug;
+  description?: string;
+  trending?: boolean;
 }
 
 // Next.js Page Props

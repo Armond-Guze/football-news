@@ -108,7 +108,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
         </Script>
       </head>
 
-      <body className="font-sans bg-black text-white">
+      <body className="font-sans bg-gray-950 text-white">
         <LayoutWrapper>{children}</LayoutWrapper>
         <FooterAd />
         <ConditionalAnalytics />

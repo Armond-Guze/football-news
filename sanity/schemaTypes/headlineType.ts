@@ -54,10 +54,26 @@ const headlineType = defineType({
       validation: (Rule) => Rule.max(300),
     }),
     defineField({
+      name: "category",
+      title: "Category",
+      type: "reference",
+      to: [{ type: "category" }],
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
       name: "tags",
       title: "Tags",
       type: "array",
-      of: [{ type: "string" }],
+      of: [
+        {
+          type: "reference",
+          to: [{ type: "tag" }]
+        }
+      ],
+      options: {
+        layout: 'tags'
+      },
+      description: "Select relevant tags for this article"
     }),
     defineField({
       name: "published",

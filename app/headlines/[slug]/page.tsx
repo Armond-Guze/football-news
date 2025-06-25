@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { client } from "@sanity/lib/client";
 import type { Headline, HeadlineListItem, HeadlinePageProps } from "@/types";
+import RelatedArticles from "@/app/components/RelatedArticles";
 
 export const dynamic = "force-dynamic";
 
@@ -102,36 +103,11 @@ export default async function HeadlinePage(props: HeadlinePageProps) {
           </section>
         </article>
 
-        {/* ✅ Sidebar - right side on larger devices, aligned with image */}
-        <aside className="lg:mt-0 bg-gray-800/50 p-6 rounded-lg h-fit">
-          <h2 className="text-xl font-semibold border-b border-gray-700 pb-2 mb-4">
-            More Headlines
-          </h2>
-          <div className="space-y-4">
-            {otherHeadlines
-              .filter((h) => h.slug.current !== trimmedSlug)
-              .slice(0, 4)
-              .map((h) => (
-                <Link
-                  key={h._id}
-                  href={`/headlines/${h.slug.current}`}
-                  className="flex gap-3 items-start hover:bg-gray-700/50 p-3 rounded transition"
-                >
-                  <div className="relative w-16 h-12 flex-shrink-0 rounded overflow-hidden">
-                    {h.coverImage?.asset?.url && (
-                      <Image
-                        src={h.coverImage.asset.url}
-                        alt={h.title}
-                        fill
-                        className="object-cover"
-                      />
-                    )}
-                  </div>
-                  <span className="text-sm text-slate-300 line-clamp-3">{h.title}</span>
-                </Link>
-              ))}
-          </div>
-        </aside>
+        {/* ✅ Enhanced Related Articles Sidebar */}
+        <RelatedArticles 
+          currentSlug={trimmedSlug} 
+          articles={otherHeadlines}
+        />
       </div>
     </main>
   );

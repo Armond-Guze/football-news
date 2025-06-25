@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -11,9 +12,8 @@ export default function Navbar() {
 
   const handleLinkClick = () => setMenuOpen(false);
 
-  // Conditionally add Home link when not on homepage
+  // Removed "Home" from navigation items
   const navItems = [
-    ...(pathname !== "/" ? [{ label: "Home", href: "/" }] : []),
     { label: "About", href: "/about" },
     { label: "Headlines", href: "/headlines" },
     { label: "Power Rankings", href: "/power-rankings" },
@@ -22,7 +22,7 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="bg-black border-b border-gray-800 sticky top-0 z-50">
+    <nav className="bg-gray-950 border-b border-gray-800 sticky top-0 z-50 shadow-lg">
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-16 py-3">
         {/* Logo - Now serves as Home link */}
         <Link href="/" className="inline-flex items-center space-x-2 group">
@@ -46,9 +46,9 @@ export default function Navbar() {
                 href={href}
                 className={`relative text-sm font-semibold pb-1 transition-all duration-300 ${
                   isActive 
-                    ? 'text-white after:w-full' 
-                    : 'text-gray-300 hover:text-white'
-                } after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-white after:transition-all after:duration-300 hover:after:w-full ${
+                    ? 'text-blue-400 after:w-full' 
+                    : 'text-gray-200 hover:text-blue-400'
+                } after:absolute after:bottom-0 after:left-0 after:h-[2px] after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full ${
                   isActive ? 'after:w-full' : 'after:w-0'
                 }`}
               >
@@ -63,21 +63,21 @@ export default function Navbar() {
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle menu"
-            className="relative p-2 rounded-lg hover:bg-gray-800 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-gray-500 group"
+            className="relative p-2 rounded-lg hover:bg-gray-800 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 group"
           >
             <div className="relative w-6 h-6">
               <span
-                className={`absolute top-1 left-0 w-6 h-0.5 bg-white transition-all duration-300 ${
+                className={`absolute top-1 left-0 w-6 h-0.5 bg-gray-200 transition-all duration-300 ${
                   menuOpen ? 'rotate-45 translate-y-2' : 'rotate-0'
                 }`}
               />
               <span
-                className={`absolute top-3 left-0 w-6 h-0.5 bg-white transition-all duration-300 ${
+                className={`absolute top-3 left-0 w-6 h-0.5 bg-gray-200 transition-all duration-300 ${
                   menuOpen ? 'opacity-0' : 'opacity-100'
                 }`}
               />
               <span
-                className={`absolute top-5 left-0 w-6 h-0.5 bg-white transition-all duration-300 ${
+                className={`absolute top-5 left-0 w-6 h-0.5 bg-gray-200 transition-all duration-300 ${
                   menuOpen ? '-rotate-45 -translate-y-2' : 'rotate-0'
                 }`}
               />
@@ -92,7 +92,7 @@ export default function Navbar() {
           menuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
-        <div className="bg-black px-6 py-6 space-y-1">
+        <div className="bg-gray-950 px-6 py-6 space-y-1">
           {navItems.map(({ label, href }) => {
             const isActive = pathname === href;
             return (
@@ -102,9 +102,9 @@ export default function Navbar() {
                 onClick={handleLinkClick}
                 className={`block text-base font-medium py-3 px-4 rounded-lg transition-all duration-300 ${
                   isActive
-                    ? 'text-white bg-gray-800 border-l-4 border-white'
-                    : 'text-gray-300 hover:text-white hover:bg-gray-800 hover:translate-x-2'
-                } focus:outline-none focus:ring-2 focus:ring-gray-500`}
+                    ? 'text-blue-400 bg-gray-800 border-l-4 border-blue-400'
+                    : 'text-gray-200 hover:text-blue-400 hover:bg-gray-800 hover:translate-x-2'
+                } focus:outline-none focus:ring-2 focus:ring-blue-500`}
               >
                 {label}
               </Link>
