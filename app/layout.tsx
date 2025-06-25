@@ -6,6 +6,22 @@ import LayoutWrapper from "./components/LayoutWrapper";
 import { Analytics } from "@vercel/analytics/react";
 import FooterAd from "./components/FooterAd";
 
+// Custom Analytics wrapper to conditionally load
+function ConditionalAnalytics() {
+  if (typeof window !== 'undefined') {
+    const isLocalDev = window.location.hostname === 'localhost' || 
+                      window.location.hostname === '127.0.0.1';
+    const hasAdminParam = window.location.search.includes('admin=true');
+    const isAdminUser = localStorage.getItem('isAdmin') === 'true';
+    
+    // Only load Vercel Analytics if not admin/dev
+    if (!isLocalDev && !hasAdminParam && !isAdminUser) {
+      return <Analytics />;
+    }
+  }
+  return null;
+}
+
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "600", "700"],
@@ -73,7 +89,21 @@ export default function RootLayout({ children }: RootLayoutProps) {
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-0YLR2ZR8SX');
+            
+            // Check multiple conditions to exclude admin/owner visits
+            const isLocalDev = window.location.hostname === 'localhost' || 
+                              window.location.hostname === '127.0.0.1';
+            
+            const hasAdminParam = window.location.search.includes('admin=true');
+            const isAdminUser = localStorage.getItem('isAdmin') === 'true';
+            
+            // Only track if not admin/dev and not local development
+            if (!isLocalDev && !hasAdminParam && !isAdminUser) {
+              gtag('config', 'G-0YLR2ZR8SX');
+            }
+            
+            // You can set localStorage.setItem('isAdmin', 'true') in your browser console
+            // Or visit your site with ?admin=true to exclude tracking
           `}
         </Script>
       </head>
@@ -81,7 +111,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <body className="font-sans bg-black text-white">
         <LayoutWrapper>{children}</LayoutWrapper>
         <FooterAd />
-        <Analytics />
+        <ConditionalAnalytics />
       </body>
     </html>
   );
