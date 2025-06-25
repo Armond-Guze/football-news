@@ -20,3 +20,19 @@ export const powerRankingsQuery = `*[_type == "powerRanking"] | order(rank asc) 
   date,
   previousRank
 }`;
+
+export const standingsQuery = `
+  *[_type == "standings"] | order(division asc, winPercentage desc, wins desc) {
+    _id,
+    teamName,
+    teamLogo,
+    wins,
+    losses,
+    ties,
+    winPercentage,
+    conference,
+    division,
+    season,
+    lastUpdated
+  }
+`;

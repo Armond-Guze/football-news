@@ -4,6 +4,7 @@ import { categoryType } from './categoryType'
 import { blockContentType } from './blockContentType'
 import headlineType from './headlineType'
 import powerRanking from './powerRanking'
+import { standingsType } from './standingsType'
 
 
 export const schemaTypes = [
@@ -13,4 +14,5 @@ export const schemaTypes = [
   blockContentType,
   headlineType,
   powerRanking,
+  standingsType,
 ]

@@ -4,43 +4,30 @@ import Image from "next/image";
 
 export default function FeaturesSection() {
   return (
-    <section className="relative overflow-hidden text-white py-24 sm:py-32 z-0">
-      {/* Background image layer */}
-      <div className="absolute inset-0 -z-20">
-        <Image
-          src="/images/backgroundImage.jpeg"
-          alt="Section texture background"
-          fill
-          quality={100}
-          priority
-          className="object-cover"
-        />
-      </div>
+    <section className="relative py-24 sm:py-32 bg-transparent">
+      <div className="absolute inset-0 bg-gradient-to-r from-gray-900/20 via-transparent to-gray-900/20"></div>
 
-      {/* Enhanced gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/70 -z-10" />
-
-      <div className="relative z-10 mx-auto max-w-6xl px-6 lg:px-8">
+      <div className="relative mx-auto max-w-6xl px-6 lg:px-8">
         <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-12 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-center">
           <div className="lg:pt-4 lg:pr-8">
             <div className="lg:max-w-lg">
               <div className="flex items-center mb-6">
-                <div className="w-3 h-3 bg-indigo-500 rounded-full mr-3"></div>
-                <h2 className="text-base font-bold leading-7 text-indigo-400 uppercase tracking-wider">
+                <div className="w-3 h-3 bg-white rounded-full mr-3"></div>
+                <h2 className="text-base font-bold leading-7 text-gray-400 uppercase tracking-wider">
                   The Best in the Game
                 </h2>
               </div>
               <p className="mt-2 text-4xl font-bold tracking-tight text-white sm:text-5xl leading-tight">
-                What Makes Elite QBs <span className="bg-gradient-to-r from-indigo-400 to-blue-400 bg-clip-text text-transparent">Unstoppable</span>
+                What Makes Elite QBs <span className="text-gray-300">Unstoppable</span>
               </p>
-              <p className="mt-6 text-lg leading-8 text-slate-300">
+              <p className="mt-6 text-lg leading-8 text-gray-300">
                 Quarterbacks like Mahomes, Burrow, and Jackson aren&apos;t just athletes—they&apos;re playmakers, leaders, and culture-setters. Here&apos;s what sets them apart from the rest.
               </p>
-              <dl className="mt-10 max-w-xl space-y-8 text-base leading-7 text-slate-300 lg:max-w-none">
-                <div className="relative pl-12 p-4 bg-white/5 rounded-xl backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-all duration-300 group">
+              <dl className="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-300 lg:max-w-none">
+                <div className="relative pl-12 p-4 bg-gray-900/50 rounded-xl backdrop-blur-sm border border-gray-800 hover:bg-gray-900/70 transition-all duration-300 group">
                   <dt className="inline font-bold text-white">
                     <svg
-                      className="absolute top-5 left-4 size-6 text-indigo-400 group-hover:scale-110 transition-transform duration-300"
+                      className="absolute top-5 left-4 size-6 text-white group-hover:scale-110 transition-transform duration-300"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                       aria-hidden="true"
@@ -51,17 +38,17 @@ export default function FeaturesSection() {
                         clipRule="evenodd"
                       />
                     </svg>
-                    Patrick Mahomes&apos; improvisation.
+                    Elite improvisation skills.
                   </dt>
                   <dd className="inline">
-                    With his no-look passes, sidearm throws, and unreal pocket awareness, Mahomes turns broken plays into highlight reels.
+                    With no-look passes, sidearm throws, and unreal pocket awareness, elite QBs turn broken plays into highlight reels.
                   </dd>
                 </div>
 
-                <div className="relative pl-12 p-4 bg-white/5 rounded-xl backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-all duration-300 group">
+                <div className="relative pl-12 p-4 bg-gray-900/50 rounded-xl backdrop-blur-sm border border-gray-800 hover:bg-gray-900/70 transition-all duration-300 group">
                   <dt className="inline font-bold text-white">
                     <svg
-                      className="absolute top-5 left-4 size-6 text-indigo-400 group-hover:scale-110 transition-transform duration-300"
+                      className="absolute top-5 left-4 size-6 text-white group-hover:scale-110 transition-transform duration-300"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                       aria-hidden="true"
@@ -72,17 +59,17 @@ export default function FeaturesSection() {
                         clipRule="evenodd"
                       />
                     </svg>
-                    Joe Burrow&apos;s poise under pressure.
+                    Poise under pressure.
                   </dt>
                   <dd className="inline">
-                    Cool, calculated, and confident—Burrow thrives in tight pockets and clutch moments, making big-time throws look routine.
+                    Cool, calculated, and confident—the best QBs thrive in tight pockets and clutch moments, making big-time throws look routine.
                   </dd>
                 </div>
 
-                <div className="relative pl-12 p-4 bg-white/5 rounded-xl backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-all duration-300 group">
+                <div className="relative pl-12 p-4 bg-gray-900/50 rounded-xl backdrop-blur-sm border border-gray-800 hover:bg-gray-900/70 transition-all duration-300 group">
                   <dt className="inline font-bold text-white">
                     <svg
-                      className="absolute top-5 left-4 size-6 text-indigo-400 group-hover:scale-110 transition-transform duration-300"
+                      className="absolute top-5 left-4 size-6 text-white group-hover:scale-110 transition-transform duration-300"
                       viewBox="0 0 20 20"
                       fill="currentColor"
                       aria-hidden="true"
@@ -94,10 +81,10 @@ export default function FeaturesSection() {
                         clipRule="evenodd"
                       />
                     </svg>
-                    Lamar Jackson&apos;s game-breaking speed.
+                    Game-breaking athleticism.
                   </dt>
                   <dd className="inline">
-                    In an instant, Jackson can flip the field with his legs. His ability to escape and accelerate makes him a threat from anywhere.
+                    In an instant, elite QBs can flip the field with their legs. Their ability to escape and accelerate makes them a threat from anywhere.
                   </dd>
                 </div>
               </dl>
@@ -106,11 +93,11 @@ export default function FeaturesSection() {
 
           {/* Right-side image with enhanced styling */}
           <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-blue-500/20 rounded-2xl blur-xl"></div>
+            <div className="absolute inset-0 bg-gray-800/20 rounded-2xl blur-xl"></div>
             <Image
               src="/images/helmet-background.png"
               alt="Quarterback helmet and background"
-              className="relative w-full max-w-s rounded-2xl shadow-2xl ring-1 ring-white/20 hover:scale-105 transition-transform duration-500"
+              className="relative w-full max-w-s rounded-2xl shadow-2xl ring-1 ring-gray-700 hover:scale-105 transition-transform duration-500"
               width={1400}
               height={1250}
             />

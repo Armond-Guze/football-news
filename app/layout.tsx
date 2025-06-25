@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import LayoutWrapper from "./components/LayoutWrapper";
 import { Analytics } from "@vercel/analytics/react";
-import GoogleAds from "./components/GoogleAds";
+import FooterAd from "./components/FooterAd";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -80,7 +80,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
 
       <body className="font-sans bg-background text-foreground">
         <LayoutWrapper>{children}</LayoutWrapper>
-        <GoogleAds />
+        <FooterAd />
         <Analytics />
       </body>
     </html>

@@ -37,7 +37,7 @@ const qbs = [
 
 export default function CardsBento() {
   return (
-    <section className="relative min-h-screen bg-black py-24 sm:py-32 text-white overflow-hidden z-0">
+    <section className="relative min-h-screen py-24 sm:py-32 text-white overflow-hidden z-0 bg-transparent">
       {/* Background Image */}
       <div className="absolute inset-0 -z-20">
         <Image
@@ -46,13 +46,13 @@ export default function CardsBento() {
           fill
           priority
           quality={100}
-          className="object-cover"
+          className="object-cover opacity-30"
           sizes="100vw"
         />
       </div>
 
-      {/* Lighter dark overlay to preserve image visibility */}
-      <div className="absolute inset-0 bg-black/30 -z-10" />
+      {/* Enhanced dark overlay with gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-gray-900/40 to-black/70 -z-10" />
 
       <div className="relative z-10 mx-auto max-w-6xl px-6 lg:px-8">
         <div className="text-center mb-16">
