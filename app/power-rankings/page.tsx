@@ -27,7 +27,9 @@ export default async function PowerRankingsPage() {
       return (
         <div className="px-4 py-16 sm:px-6 lg:px-12 bg-black text-white min-h-screen flex items-center justify-center">
           <div className="text-center">
-            <h1 className="text-4xl font-bold text-white mb-4">No Rankings Available</h1>
+            <h1 className="text-4xl font-bold text-white mb-4">
+              No Rankings Available
+            </h1>
             <p className="text-gray-400 text-lg">
               Power rankings will be published soon. Check back later!
             </p>
@@ -46,15 +48,26 @@ export default async function PowerRankingsPage() {
           <p className="text-xl text-gray-300 font-medium">
             Latest rankings updated weekly • {rankings.length} teams
           </p>
-          <div className="mt-4 inline-flex items-center px-4 py-2 bg-black border border-gray-800 rounded-full">
+          <div className="mt-4 inline-flex items-center px-4 py-2 bg-black rounded-full">
             <div className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse" />
-            <span className="text-sm text-green-400 font-semibold">Live Rankings</span>
+            <span className="text-sm text-green-400 font-semibold">
+              Live Rankings
+            </span>
           </div>
         </header>
 
         <div className="space-y-12 max-w-3xl mx-auto">
           {rankings.map((team) => {
-            const { _id, rank, previousRank, teamColor, teamName, teamLogo, summary, body } = team;
+            const {
+              _id,
+              rank,
+              previousRank,
+              teamColor,
+              teamName,
+              teamLogo,
+              summary,
+              body,
+            } = team;
             const change = previousRank ? previousRank - rank : 0;
             const movement = getMovementIndicator(change);
 
@@ -62,11 +75,10 @@ export default async function PowerRankingsPage() {
               <article key={_id} className="group">
                 {/* Compact Team Header */}
                 <div className="relative bg-black p-3">
-                  
                   {/* Team Color Accent */}
-                  <div 
+                  <div
                     className="absolute left-0 top-0 bottom-0 w-1"
-                    style={{ backgroundColor: teamColor || '#6366f1' }}
+                    style={{ backgroundColor: teamColor || "#6366f1" }}
                   />
 
                   <div className="flex items-center gap-4">
@@ -76,13 +88,8 @@ export default async function PowerRankingsPage() {
                         Rank
                       </span>
                       <span className="text-2xl font-black text-white">
-                        #{rank}
+                        {rank}
                       </span>
-                      {rank <= 3 && (
-                        <span className="text-xs">
-                          {rank === 1 ? "🏆" : rank === 2 ? "🥈" : "🥉"}
-                        </span>
-                      )}
                     </div>
 
                     {/* Team Logo */}
@@ -105,14 +112,18 @@ export default async function PowerRankingsPage() {
                         <h2 className="text-xl sm:text-2xl font-bold text-white truncate">
                           {teamName}
                         </h2>
-                        
+
                         {/* Movement Indicator */}
                         <div className="flex flex-col items-center min-w-[50px] bg-gray-900 rounded-lg p-2">
-                          <span className={`text-lg font-bold ${movement.color}`}>
+                          <span
+                            className={`text-lg font-bold ${movement.color}`}
+                          >
                             {movement.symbol}
                           </span>
                           {change !== 0 ? (
-                            <span className={`text-xs font-semibold ${movement.color}`}>
+                            <span
+                              className={`text-xs font-semibold ${movement.color}`}
+                            >
                               {Math.abs(change)}
                             </span>
                           ) : (
@@ -148,7 +159,9 @@ export default async function PowerRankingsPage() {
     return (
       <div className="px-4 py-16 sm:px-6 lg:px-12 bg-black text-white min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-4xl font-bold text-white mb-4">Error Loading Rankings</h1>
+          <h1 className="text-4xl font-bold text-white mb-4">
+            Error Loading Rankings
+          </h1>
           <p className="text-gray-400 text-lg">
             Unable to load power rankings. Please try again later.
           </p>

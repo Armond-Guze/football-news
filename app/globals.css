@@ -14,3 +14,8 @@ html, body {
 div, main, section, article, header, footer, nav {
   background-color: inherit;
 }
+
+/* Ensure no white backgrounds */
+body, html, #__next, [id="__next"] > div {
+  background-color: #000000 !important;
+}

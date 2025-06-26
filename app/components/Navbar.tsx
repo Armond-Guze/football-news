@@ -12,8 +12,9 @@ export default function Navbar() {
 
   const handleLinkClick = () => setMenuOpen(false);
 
-  // Removed "Home" from navigation items
+  // Add Home link when not on homepage
   const navItems = [
+    ...(pathname !== "/" ? [{ label: "Home", href: "/" }] : []),
     { label: "About", href: "/about" },
     { label: "Headlines", href: "/headlines" },
     { label: "Power Rankings", href: "/power-rankings" },

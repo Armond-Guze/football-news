@@ -51,8 +51,8 @@ export default function CardsBento() {
         />
       </div>
 
-      {/* Enhanced dark overlay with gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-gray-900/40 to-black/70 -z-10" />
+      {/* Black overlay */}
+      <div className="absolute inset-0 bg-black/80 -z-10" />
 
       <div className="relative z-10 mx-auto max-w-6xl px-6 lg:px-8">
         <div className="text-center mb-16">
