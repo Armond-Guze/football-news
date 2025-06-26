@@ -7,6 +7,7 @@ import { headlinesByCategoryQuery, categoriesQuery } from '@/sanity/lib/queries'
 import { HeadlineListItem, Category } from '@/types';
 import Link from 'next/link';
 import Image from 'next/image';
+import NewsletterSignup from '@/app/components/NewsletterSignup';
 
 export default function CategoryPage() {
   const params = useParams();
@@ -57,9 +58,9 @@ export default function CategoryPage() {
   };
 
   if (loading) {
-    return (
-      <div className="min-h-screen bg-gray-950 text-white py-12">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+  return (
+    <div className="min-h-screen bg-black text-white py-12">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="animate-pulse space-y-8">
             <div className="h-12 bg-gray-800 rounded w-1/3"></div>
             <div className="h-4 bg-gray-800 rounded w-2/3"></div>
@@ -80,7 +81,7 @@ export default function CategoryPage() {
 
   if (!category) {
     return (
-      <div className="min-h-screen bg-gray-950 text-white flex items-center justify-center">
+      <div className="min-h-screen bg-black text-white flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold mb-4">Category Not Found</h1>
           <p className="text-gray-400 mb-6">The category you&apos;re looking for doesn&apos;t exist.</p>
@@ -96,7 +97,7 @@ export default function CategoryPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-950 text-white py-12">
+    <div className="min-h-screen bg-black text-white py-12">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Category Header */}
         <div className="mb-12">
@@ -141,6 +142,21 @@ export default function CategoryPage() {
           </ol>
         </nav>
 
+        {/* Newsletter Signup */}
+        <div className="mb-12">
+          <div className="bg-black rounded-lg p-8 border border-gray-800">
+            <div className="text-center mb-6">
+              <h3 className="text-2xl font-bold text-white mb-2">
+                Stay Updated on {category.title}
+              </h3>
+              <p className="text-gray-400">
+                Get the latest {category.title.toLowerCase()} news and analysis delivered to your inbox
+              </p>
+            </div>
+            <NewsletterSignup variant="compact" className="max-w-md mx-auto" />
+          </div>
+        </div>
+
         {/* Articles Grid */}
         {headlines.length === 0 ? (
           <div className="text-center py-12">
@@ -159,7 +175,7 @@ export default function CategoryPage() {
             {headlines.map((headline) => (
               <article
                 key={headline._id}
-                className="group bg-gray-900 rounded-lg overflow-hidden hover:bg-gray-800 transition-colors"
+                className="group bg-black rounded-lg overflow-hidden border border-gray-800 hover:border-gray-700 transition-colors"
               >
                 <Link href={`/headlines/${headline.slug.current}`}>
                   {headline.coverImage?.asset?.url && (

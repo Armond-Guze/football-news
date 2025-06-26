@@ -40,7 +40,7 @@ export default function TagsPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-950 text-white py-12">
+      <div className="min-h-screen bg-black text-white py-12">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="animate-pulse space-y-8">
             <div className="h-12 bg-gray-800 rounded w-1/3"></div>
@@ -57,7 +57,7 @@ export default function TagsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-950 text-white py-12">
+    <div className="min-h-screen bg-black text-white py-12">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-12">

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Mail, Instagram, ExternalLink } from "lucide-react";
+import NewsletterSignup from "./NewsletterSignup";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -20,7 +21,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-gray-900 border-t border-gray-800 py-16 text-gray-200">
+    <footer className="bg-black border-t border-gray-800 py-16 text-gray-200">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand Section */}
@@ -44,7 +45,7 @@ const Footer = () => {
             <div className="flex items-center space-x-4">
               <a
                 href="mailto:TheGameSnap@yahoo.com"
-                className="flex items-center space-x-2 text-gray-300 hover:text-blue-400 transition-colors group"
+                className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors group"
               >
                 <Mail size={18} className="group-hover:scale-110 transition-transform" />
                 <span className="text-sm">TheGameSnap@yahoo.com</span>
@@ -62,7 +63,7 @@ const Footer = () => {
                 <li key={label}>
                   <Link
                     href={href}
-                    className="text-gray-300 hover:text-blue-400 transition-colors text-sm font-medium group flex items-center"
+                    className="text-gray-300 hover:text-white transition-colors text-sm font-medium group flex items-center"
                   >
                     <span className="group-hover:translate-x-1 transition-transform">
                       {label}
@@ -72,6 +73,11 @@ const Footer = () => {
                 </li>
               ))}
             </ul>
+          </div>
+
+          {/* Newsletter Section */}
+          <div>
+            <NewsletterSignup variant="footer" />
           </div>
 
           {/* Legal & Social */}
@@ -87,7 +93,7 @@ const Footer = () => {
                   href="https://www.instagram.com/thegamesnap"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center space-x-2 text-gray-300 hover:text-blue-400 transition-colors group"
+                  className="inline-flex items-center space-x-2 text-gray-300 hover:text-white transition-colors group"
                 >
                   <Instagram size={18} className="group-hover:scale-110 transition-transform" />
                   <span className="text-sm font-medium">Instagram</span>
@@ -102,7 +108,7 @@ const Footer = () => {
                     <li key={label}>
                       <Link
                         href={href}
-                        className="text-gray-300 hover:text-blue-400 transition-colors text-sm"
+                        className="text-gray-300 hover:text-white transition-colors text-sm"
                       >
                         {label}
                       </Link>

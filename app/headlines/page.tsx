@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import FilteredHeadlines from '../components/FilteredHeadlines';
 import TagCloud from '../components/TagCloud';
+import NewsletterSignup from '../components/NewsletterSignup';
 
 function HeadlinesContent() {
   const searchParams = useSearchParams();
@@ -12,7 +13,7 @@ function HeadlinesContent() {
   const tag = searchParams.get('tag');
 
   return (
-    <div className="min-h-screen bg-gray-950 text-white py-12">
+    <div className="min-h-screen bg-black text-white py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-12">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
@@ -41,6 +42,8 @@ function HeadlinesContent() {
               <TagCloud maxTags={15} />
             </div>
             
+            <NewsletterSignup variant="sidebar" />
+            
             <div className="bg-gray-900 rounded-lg p-6">
               <h3 className="text-lg font-semibold mb-4 text-white">Popular Categories</h3>
               <div className="space-y-2">
@@ -68,7 +71,7 @@ function HeadlinesContent() {
 export default function HeadlinesPage() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen bg-gray-950 text-white py-12">
+      <div className="min-h-screen bg-black text-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="animate-pulse space-y-8">
             <div className="h-12 bg-gray-800 rounded w-1/3"></div>

@@ -3,6 +3,7 @@ import Image from "next/image";
 import { urlFor } from "@sanity/lib/image";
 import { Calendar, TrendingUp, Eye } from "lucide-react";
 import type { HeadlineListItem } from "@/types";
+import NewsletterSignup from "./NewsletterSignup";
 
 interface RelatedArticlesProps {
   currentSlug: string;
@@ -141,20 +142,12 @@ export default function RelatedArticles({ currentSlug, articles }: RelatedArticl
         
         {/* Newsletter CTA */}
         <div className="mt-6 pt-6 border-t border-gray-800">
-          <div className="bg-gray-800 rounded-xl p-4 text-center">
-            <h3 className="text-white font-semibold mb-2">Stay in the Loop</h3>
-            <p className="text-gray-400 text-sm mb-3">
-              Get the latest NFL insights delivered weekly
-            </p>
-            <Link 
-              href="/contact"
-              className="inline-flex items-center px-4 py-2 bg-white text-black text-sm font-medium rounded-lg hover:bg-gray-100 transition-colors"
-            >
-              Subscribe Now
-            </Link>
-          </div>
+          <NewsletterSignup variant="compact" />
         </div>
       </div>
+
+      {/* Newsletter Sidebar */}
+      <NewsletterSignup variant="sidebar" />
 
       {/* Popular Categories Quick Links */}
       <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6">

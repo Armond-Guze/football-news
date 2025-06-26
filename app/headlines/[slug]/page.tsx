@@ -49,7 +49,7 @@ export default async function HeadlinePage(props: HeadlinePageProps) {
   if (!headline) notFound();
 
   return (
-    <main className="bg-gray-900 text-white min-h-screen">
+    <main className="bg-black text-white min-h-screen">
       {/* 📦 Content Container */}
       <div className="px-4 md:px-8 py-10 max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-10">
         {/* ✅ Main Article Section */}

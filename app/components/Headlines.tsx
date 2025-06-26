@@ -27,9 +27,7 @@ export default async function Headlines() {
   const sidebar = headlines.slice(1);
 
   return (
-    <section className="relative py-24 px-6 lg:px-8 bg-transparent">
-      <div className="absolute inset-0 bg-gradient-to-b from-gray-900/40 via-transparent to-gray-900/40"></div>
-      
+    <section className="relative py-24 px-6 lg:px-8 bg-black">
       <div className="relative mx-auto max-w-6xl">
         {/* Section Header */}
         <div className="text-center mb-16">

@@ -51,7 +51,7 @@ export default async function BentoGrid() {
           
           {/* Large Power Rankings Card */}
           <Link href="/power-rankings" className="md:col-span-2 lg:col-span-3 md:row-span-2 group">
-            <div className="relative h-full min-h-[350px] rounded-3xl overflow-hidden bg-gray-900/40 backdrop-blur-sm border border-gray-800/50 hover:bg-gray-900/60 transition-all duration-500 hover:scale-[1.02] shadow-2xl">
+            <div className="relative h-full min-h-[350px] rounded-3xl overflow-hidden bg-black border border-gray-800 hover:border-gray-700 transition-all duration-500 hover:scale-[1.02] shadow-2xl">
             <Image
               src="/images/lombardi-trophy.png"
               alt="Power Rankings"
@@ -116,7 +116,7 @@ export default async function BentoGrid() {
         {/* Featured Headline */}
         {featuredHeadline?.slug?.current ? (
           <Link href={`/headlines/${featuredHeadline.slug.current}`} className="md:col-span-2 lg:col-span-3 group">
-            <div className="relative h-full min-h-[350px] rounded-3xl overflow-hidden bg-gray-900/40 backdrop-blur-sm border border-gray-800/50 hover:bg-gray-900/60 transition-all duration-500 hover:scale-[1.02] shadow-xl">
+            <div className="relative h-full min-h-[350px] rounded-3xl overflow-hidden bg-black border border-gray-800 hover:border-gray-700 transition-all duration-500 hover:scale-[1.02] shadow-xl">
               {featuredHeadline.coverImage?.asset ? (
                 <Image
                   src={urlFor(featuredHeadline.coverImage).width(600).url()}
@@ -154,7 +154,7 @@ export default async function BentoGrid() {
             </div>          </Link>
         ) : (
           <Link href="/headlines" className="md:col-span-2 lg:col-span-3 group">
-            <div className="relative h-full min-h-[350px] rounded-3xl overflow-hidden bg-gray-900/40 backdrop-blur-sm border border-gray-800/50 hover:bg-gray-900/60 transition-all duration-500 hover:scale-[1.02] shadow-xl">
+            <div className="relative h-full min-h-[350px] rounded-3xl overflow-hidden bg-black border border-gray-800 hover:border-gray-700 transition-all duration-500 hover:scale-[1.02] shadow-xl">
               <Image
                 src="/images/jalen-hurts.png"
                 alt="Featured News"
@@ -195,7 +195,7 @@ export default async function BentoGrid() {
               href={headline.slug?.current ? `/headlines/${headline.slug.current}` : '/headlines'} 
               className="md:col-span-2 lg:col-span-2 group"
             >
-              <div className="relative h-full min-h-[160px] rounded-2xl overflow-hidden bg-gray-900/40 backdrop-blur-sm border border-gray-800/50 hover:bg-gray-900/60 transition-all duration-500 hover:scale-[1.02] shadow-lg">
+              <div className="relative h-full min-h-[160px] rounded-2xl overflow-hidden bg-black border border-gray-800 hover:border-gray-700 transition-all duration-500 hover:scale-[1.02] shadow-lg">
                 {headline.coverImage?.asset ? (
                   <Image
                     src={urlFor(headline.coverImage).width(400).url()}
@@ -224,7 +224,7 @@ export default async function BentoGrid() {
         ) : (
           <>
             <Link href="/headlines" className="md:col-span-2 lg:col-span-2 group">
-              <div className="relative h-full min-h-[160px] rounded-2xl overflow-hidden bg-gray-900/40 backdrop-blur-sm border border-gray-800/50 hover:bg-gray-900/60 transition-all duration-500 hover:scale-[1.02] shadow-lg">
+              <div className="relative h-full min-h-[160px] rounded-2xl overflow-hidden bg-black border border-gray-800 hover:border-gray-700 transition-all duration-500 hover:scale-[1.02] shadow-lg">
                 <Image
                   src="/images/patrick-mahomes.png"
                   alt="Player Analysis"
@@ -247,7 +247,7 @@ export default async function BentoGrid() {
             </Link>
 
             <Link href="/about" className="md:col-span-2 lg:col-span-2 group">
-              <div className="relative h-full min-h-[160px] rounded-2xl overflow-hidden bg-gray-900/40 backdrop-blur-sm border border-gray-800/50 hover:bg-gray-900/60 transition-all duration-500 hover:scale-[1.02] shadow-lg">
+              <div className="relative h-full min-h-[160px] rounded-2xl overflow-hidden bg-black border border-gray-800 hover:border-gray-700 transition-all duration-500 hover:scale-[1.02] shadow-lg">
                 <Image
                   src="/images/josh-allen.png"
                   alt="Draft Analysis"
@@ -270,7 +270,7 @@ export default async function BentoGrid() {
             </Link>
 
             <Link href="/headlines" className="md:col-span-2 lg:col-span-2 group">
-              <div className="relative h-full min-h-[160px] rounded-2xl overflow-hidden bg-gray-900/40 backdrop-blur-sm border border-gray-800/50 hover:bg-gray-900/60 transition-all duration-500 hover:scale-[1.02] shadow-lg">
+              <div className="relative h-full min-h-[160px] rounded-2xl overflow-hidden bg-black border border-gray-800 hover:border-gray-700 transition-all duration-500 hover:scale-[1.02] shadow-lg">
                 <Image
                   src="/images/lamar-jackson.png"
                   alt="Game Recaps"

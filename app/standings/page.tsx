@@ -113,9 +113,9 @@ export default function StandingsPage() {
 
   if (loading) {
     return (
-      <div className="bg-gray-950 min-h-screen text-white flex items-center justify-center">
+      <div className="bg-black min-h-screen text-white flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-400 mx-auto mb-4"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white mx-auto mb-4"></div>
           <p className="text-gray-300">Loading standings...</p>
         </div>
       </div>
@@ -123,7 +123,7 @@ export default function StandingsPage() {
   }
 
   return (
-    <div className="bg-gray-950 min-h-screen text-white">
+    <div className="bg-black min-h-screen text-white">
       {/* Hero Section */}
       <section className="relative py-24 px-6 lg:px-8">
         <div className="relative mx-auto max-w-7xl">
@@ -131,123 +131,80 @@ export default function StandingsPage() {
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">
               NFL Standings
             </h1>
-            <div className="w-24 h-1 bg-blue-400 mx-auto mb-6"></div>
+            <div className="w-24 h-1 bg-white mx-auto mb-6"></div>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
               Current team standings organized by division
             </p>
             
-            {/* Sync Buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <button
-                onClick={handleSync}
-                disabled={syncing}
-                className="inline-flex items-center px-6 py-3 bg-white text-black font-semibold rounded-lg hover:bg-gray-200 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {syncing ? (
-                  <>
-                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-black mr-2"></div>
-                    Syncing...
-                  </>
-                ) : (
-                  <>
-                    <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                    </svg>
-                    Update from ESPN
-                  </>
-                )}
-              </button>
-
-              <button
-                onClick={handleLogoUpdate}
-                disabled={updatingLogos}
-                className="inline-flex items-center px-6 py-3 bg-gray-800 text-white font-semibold rounded-lg hover:bg-gray-700 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed border border-gray-600"
-              >
-                {updatingLogos ? (
-                  <>
-                    <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                    Adding Logos...
-                  </>
-                ) : (
-                  <>
-                    <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
-                    Add Team Logos
-                  </>
-                )}
-              </button>
-              
-              {lastSyncTime && (
-                <p className="text-sm text-gray-400">
-                  Last updated: {new Date(lastSyncTime).toLocaleDateString('en-US', {
-                    month: 'short',
-                    day: 'numeric',
-                    hour: '2-digit',
-                    minute: '2-digit'
-                  })}
-                </p>
-              )}
-            </div>
+            {lastSyncTime && (
+              <p className="text-sm text-gray-400">
+                Last updated: {new Date(lastSyncTime).toLocaleDateString('en-US', {
+                  month: 'short',
+                  day: 'numeric',
+                  hour: '2-digit',
+                  minute: '2-digit'
+                })}
+              </p>
+            )}
           </div>
         </div>
       </section>
 
       {/* Standings Content */}
-      <section className="relative py-12 px-6 lg:px-8 bg-transparent">
-        <div className="relative mx-auto max-w-7xl">
+      <section className="relative py-12 px-6 lg:px-8">
+        <div className="relative mx-auto max-w-7xl space-y-16">
           
           {/* AFC Conference */}
-          <div className="mb-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+          <div>
+            <h2 className="text-3xl font-bold text-white mb-8 text-center">
               American Football Conference (AFC)
             </h2>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {divisions.slice(0, 4).map(division => (
-                <div key={division} className="bg-white border border-gray-300 rounded-2xl overflow-hidden shadow-lg">
-                  <div className="bg-gray-100 px-6 py-4 border-b border-gray-300">
-                    <h3 className="text-xl font-bold text-gray-900">{division}</h3>
+                <div key={division} className="bg-black border border-gray-800 rounded-2xl overflow-hidden">
+                  <div className="bg-black px-6 py-4 border-b border-gray-800">
+                    <h3 className="text-xl font-bold text-white">{division}</h3>
                   </div>
                   
                   <div className="overflow-x-auto">
                     <table className="w-full">
                       <thead>
-                        <tr className="bg-gray-50">
-                          <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">Team</th>
-                          <th className="px-4 py-3 text-center text-sm font-semibold text-gray-700">W</th>
-                          <th className="px-4 py-3 text-center text-sm font-semibold text-gray-700">L</th>
-                          <th className="px-4 py-3 text-center text-sm font-semibold text-gray-700">Win %</th>
+                        <tr className="bg-black">
+                          <th className="px-4 py-3 text-left text-sm font-semibold text-gray-300">Team</th>
+                          <th className="px-4 py-3 text-center text-sm font-semibold text-gray-300">W</th>
+                          <th className="px-4 py-3 text-center text-sm font-semibold text-gray-300">L</th>
+                          <th className="px-4 py-3 text-center text-sm font-semibold text-gray-300">Win %</th>
                         </tr>
                       </thead>
                       <tbody>
                         {standingsByDivision[division]?.map((team, index) => (
                           <tr 
                             key={team._id} 
-                            className={`border-b border-gray-200 hover:bg-gray-50 transition-colors ${
-                              index === 0 ? 'bg-green-50' : ''
+                            className={`border-b border-gray-800 hover:bg-gray-900 transition-colors ${
+                              index === 0 ? 'bg-gray-900/50' : 'bg-black'
                             }`}
                           >
                             <td className="px-4 py-4">
                               <div className="flex items-center space-x-3">
                                 {team.teamLogo?.asset ? (
                                   <Image
-                                    src={urlFor(team.teamLogo).width(32).height(32).url()}
+                                    src={urlFor(team.teamLogo).width(40).height(40).url()}
                                     alt={team.teamName}
-                                    width={32}
-                                    height={32}
-                                    className="w-8 h-8 rounded-full bg-white/10"
+                                    width={40}
+                                    height={40}
+                                    className="w-8 h-8 sm:w-10 sm:h-10 rounded-full object-contain"
                                   />
                                 ) : (
-                                  <div className="w-8 h-8 rounded-full bg-gray-600 flex items-center justify-center">
+                                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gray-600 flex items-center justify-center">
                                     <span className="text-white text-xs font-bold">
                                       {team.teamName.charAt(0)}
                                     </span>
                                   </div>
                                 )}
-                                <span className="text-white font-medium">{team.teamName}</span>
+                                <span className="text-white font-medium text-sm sm:text-base">{team.teamName}</span>
                                 {index === 0 && (
-                                  <span className="text-xs bg-green-600 text-white px-2 py-1 rounded-full">
-                                    Division Leader
+                                  <span className="text-xs bg-green-600 text-white px-2 py-1 rounded-full hidden sm:inline">
+                                    Leader
                                   </span>
                                 )}
                               </div>
@@ -279,55 +236,55 @@ export default function StandingsPage() {
 
           {/* NFC Conference */}
           <div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+            <h2 className="text-3xl font-bold text-white mb-8 text-center">
               National Football Conference (NFC)
             </h2>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               {divisions.slice(4, 8).map(division => (
-                <div key={division} className="bg-white border border-gray-300 rounded-2xl overflow-hidden shadow-lg">
-                  <div className="bg-gray-100 px-6 py-4 border-b border-gray-300">
-                    <h3 className="text-xl font-bold text-gray-900">{division}</h3>
+                <div key={division} className="bg-black border border-gray-800 rounded-2xl overflow-hidden">
+                  <div className="bg-black px-6 py-4 border-b border-gray-800">
+                    <h3 className="text-xl font-bold text-white">{division}</h3>
                   </div>
                   
                   <div className="overflow-x-auto">
                     <table className="w-full">
                       <thead>
-                        <tr className="bg-gray-50">
-                          <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">Team</th>
-                          <th className="px-4 py-3 text-center text-sm font-semibold text-gray-700">W</th>
-                          <th className="px-4 py-3 text-center text-sm font-semibold text-gray-700">L</th>
-                          <th className="px-4 py-3 text-center text-sm font-semibold text-gray-700">Win %</th>
+                        <tr className="bg-black">
+                          <th className="px-4 py-3 text-left text-sm font-semibold text-gray-300">Team</th>
+                          <th className="px-4 py-3 text-center text-sm font-semibold text-gray-300">W</th>
+                          <th className="px-4 py-3 text-center text-sm font-semibold text-gray-300">L</th>
+                          <th className="px-4 py-3 text-center text-sm font-semibold text-gray-300">Win %</th>
                         </tr>
                       </thead>
                       <tbody>
                         {standingsByDivision[division]?.map((team, index) => (
                           <tr 
                             key={team._id} 
-                            className={`border-b border-gray-200 hover:bg-gray-50 transition-colors ${
-                              index === 0 ? 'bg-green-50' : ''
+                            className={`border-b border-gray-800 hover:bg-gray-900 transition-colors ${
+                              index === 0 ? 'bg-gray-900/50' : 'bg-black'
                             }`}
                           >
                             <td className="px-4 py-4">
                               <div className="flex items-center space-x-3">
                                 {team.teamLogo?.asset ? (
                                   <Image
-                                    src={urlFor(team.teamLogo).width(32).height(32).url()}
+                                    src={urlFor(team.teamLogo).width(40).height(40).url()}
                                     alt={team.teamName}
-                                    width={32}
-                                    height={32}
-                                    className="w-8 h-8 rounded-full bg-white/10"
+                                    width={40}
+                                    height={40}
+                                    className="w-8 h-8 sm:w-10 sm:h-10 rounded-full object-contain"
                                   />
                                 ) : (
-                                  <div className="w-8 h-8 rounded-full bg-gray-600 flex items-center justify-center">
+                                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gray-600 flex items-center justify-center">
                                     <span className="text-white text-xs font-bold">
                                       {team.teamName.charAt(0)}
                                     </span>
                                   </div>
                                 )}
-                                <span className="text-white font-medium">{team.teamName}</span>
+                                <span className="text-white font-medium text-sm sm:text-base">{team.teamName}</span>
                                 {index === 0 && (
-                                  <span className="text-xs bg-green-600 text-white px-2 py-1 rounded-full">
-                                    Division Leader
+                                  <span className="text-xs bg-green-600 text-white px-2 py-1 rounded-full hidden sm:inline">
+                                    Leader
                                   </span>
                                 )}
                               </div>
