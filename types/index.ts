@@ -60,6 +60,8 @@ export interface Headline {
   category?: Category;
   tags?: Pick<Tag, 'title' | 'slug'>[];
   published?: boolean;
+  youtubeVideoId?: string;
+  videoTitle?: string;
   _createdAt: string;
   _updatedAt: string;
 }

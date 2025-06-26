@@ -1,6 +1,6 @@
-import { client } from "@sanity/lib/client";
-import { headlineQuery, powerRankingsQuery } from "@sanity/lib/queries";
-import { urlFor } from "@sanity/lib/image";
+import { client } from "@/sanity/lib/client";
+import { headlineQuery, powerRankingsQuery } from "@/sanity/lib/queries";
+import { urlFor } from "@/sanity/lib/image";
 import Link from "next/link";
 import Image from "next/image";
 import type { PowerRankingTeam } from "@/types";

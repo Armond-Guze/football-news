@@ -58,7 +58,6 @@ const headlineType = defineType({
       title: "Category",
       type: "reference",
       to: [{ type: "category" }],
-      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "tags",
@@ -66,14 +65,13 @@ const headlineType = defineType({
       type: "array",
       of: [
         {
-          type: "reference",
-          to: [{ type: "tag" }]
+          type: "string"
         }
       ],
       options: {
         layout: 'tags'
       },
-      description: "Select relevant tags for this article"
+      description: "Enter relevant tags for this article (one per line)"
     }),
     defineField({
       name: "published",
@@ -85,6 +83,23 @@ const headlineType = defineType({
       name: "body",
       title: "Body Content",
       type: "blockContent",
+    }),
+    defineField({
+      name: "youtubeVideoId",
+      title: "YouTube Video ID",
+      type: "string",
+      description: "Enter the YouTube video ID (e.g., 'dQw4w9WgXcQ' from https://www.youtube.com/watch?v=dQw4w9WgXcQ)",
+      validation: (Rule) => Rule.regex(/^[a-zA-Z0-9_-]{11}$/, {
+        name: "YouTube Video ID",
+        invert: false
+      }).error("Must be a valid 11-character YouTube video ID")
+    }),
+    defineField({
+      name: "videoTitle",
+      title: "Video Title",
+      type: "string",
+      description: "Optional: Custom title for the video embed",
+      hidden: ({ document }) => !document?.youtubeVideoId,
     }),
     defineField({
       name: "priority",

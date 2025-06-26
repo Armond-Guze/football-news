@@ -1,4 +1,4 @@
-import { Poppins } from "next/font/google";
+import { Inter } from "next/font/google";
 import Script from "next/script";
 import type { Metadata } from "next";
 import "./globals.css";
@@ -22,10 +22,9 @@ function ConditionalAnalytics() {
   return null;
 }
 
-const poppins = Poppins({
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["400", "600", "700"],
-  variable: "--font-poppins",
+  variable: "--font-inter",
   display: "swap",
 });
 
@@ -75,7 +74,7 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en" className={poppins.variable}>
+    <html lang="en" className={inter.variable}>
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <script

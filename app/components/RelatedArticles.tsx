@@ -4,13 +4,21 @@ import { urlFor } from "@sanity/lib/image";
 import { Calendar, TrendingUp, Eye } from "lucide-react";
 import type { HeadlineListItem } from "@/types";
 import NewsletterSignup from "./NewsletterSignup";
+import YouTubeEmbed from "./YouTubeEmbed";
 
 interface RelatedArticlesProps {
   currentSlug: string;
   articles: HeadlineListItem[];
+  youtubeVideoId?: string;
+  videoTitle?: string;
 }
 
-export default function RelatedArticles({ currentSlug, articles }: RelatedArticlesProps) {
+export default function RelatedArticles({ 
+  currentSlug, 
+  articles, 
+  youtubeVideoId,
+  videoTitle 
+}: RelatedArticlesProps) {
   // Filter out current article and get smart recommendations
   const relatedArticles = articles
     .filter((article) => article.slug.current !== currentSlug)
@@ -146,55 +154,18 @@ export default function RelatedArticles({ currentSlug, articles }: RelatedArticl
         </div>
       </div>
 
-      {/* Newsletter Sidebar */}
-      <NewsletterSignup variant="sidebar" />
+      {/* YouTube Video Embed */}
+      {youtubeVideoId && (
+        <YouTubeEmbed 
+          videoId={youtubeVideoId}
+          title={videoTitle}
+        />
+      )}
 
-      {/* Popular Categories Quick Links */}
-      <div className="bg-gray-900 border border-gray-800 rounded-2xl p-6">
-        <h2 className="text-lg font-bold text-white mb-4">Explore Topics</h2>
-        
-        <div className="grid grid-cols-2 gap-3">
-          <Link 
-            href="/power-rankings" 
-            className="bg-gray-800 hover:bg-gray-700 rounded-lg p-3 text-center transition-colors group"
-          >
-            <div className="text-2xl mb-1">📊</div>
-            <div className="text-sm font-medium text-white group-hover:text-gray-300">
-              Power Rankings
-            </div>
-          </Link>
-          
-          <Link 
-            href="/standings" 
-            className="bg-gray-800 hover:bg-gray-700 rounded-lg p-3 text-center transition-colors group"
-          >
-            <div className="text-2xl mb-1">🏆</div>
-            <div className="text-sm font-medium text-white group-hover:text-gray-300">
-              Standings
-            </div>
-          </Link>
-          
-          <Link 
-            href="/headlines" 
-            className="bg-gray-800 hover:bg-gray-700 rounded-lg p-3 text-center transition-colors group"
-          >
-            <div className="text-2xl mb-1">📰</div>
-            <div className="text-sm font-medium text-white group-hover:text-gray-300">
-              All News
-            </div>
-          </Link>
-          
-          <Link 
-            href="/about" 
-            className="bg-gray-800 hover:bg-gray-700 rounded-lg p-3 text-center transition-colors group"
-          >
-            <div className="text-2xl mb-1">🏈</div>
-            <div className="text-sm font-medium text-white group-hover:text-gray-300">
-              About Us
-            </div>
-          </Link>
-        </div>
-      </div>
+      {/* Fallback Newsletter if no video */}
+      {!youtubeVideoId && (
+        <NewsletterSignup variant="sidebar" />
+      )}
     </aside>
   );
 }

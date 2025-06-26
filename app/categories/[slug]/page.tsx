@@ -211,12 +211,15 @@ export default function CategoryPage() {
                     
                     {headline.tags && headline.tags.length > 0 && (
                       <div className="flex flex-wrap gap-1 mt-3">
-                        {headline.tags.slice(0, 3).map((tag, index) => (
+                        {headline.tags
+                          .filter((tag) => tag && tag.title) // Filter out null/undefined tags
+                          .slice(0, 3)
+                          .map((tag, index) => (
                           <span
                             key={index}
                             className="text-xs px-2 py-1 bg-gray-800 text-gray-400 rounded"
                           >
-                            #{tag}
+                            #{tag.title}
                           </span>
                         ))}
                       </div>

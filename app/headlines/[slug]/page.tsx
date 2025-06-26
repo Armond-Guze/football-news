@@ -2,7 +2,7 @@ import { PortableText } from "@portabletext/react";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { client } from "@sanity/lib/client";
+import { client } from "@/sanity/lib/client";
 import type { Headline, HeadlineListItem, HeadlinePageProps } from "@/types";
 import RelatedArticles from "@/app/components/RelatedArticles";
 
@@ -22,6 +22,8 @@ export default async function HeadlinePage(props: HeadlinePageProps) {
         summary,
         date,
         body,
+        youtubeVideoId,
+        videoTitle,
         author->{
           name,
           image {
@@ -107,6 +109,8 @@ export default async function HeadlinePage(props: HeadlinePageProps) {
         <RelatedArticles 
           currentSlug={trimmedSlug} 
           articles={otherHeadlines}
+          youtubeVideoId={headline.youtubeVideoId}
+          videoTitle={headline.videoTitle}
         />
       </div>
     </main>

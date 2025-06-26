@@ -1,8 +1,8 @@
 "use client";
 
-import { client } from "@sanity/lib/client";
-import { standingsQuery } from "@sanity/lib/queries";
-import { urlFor } from "@sanity/lib/image";
+import { client } from "@/sanity/lib/client";
+import { standingsQuery } from "@/sanity/lib/queries";
+import { urlFor } from "@/sanity/lib/image";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 

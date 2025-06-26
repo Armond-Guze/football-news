@@ -8,7 +8,7 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['var(--font-poppins)', 'sans-serif'],
+        sans: ['var(--font-inter)', 'sans-serif'],
       },
       colors: {
         background: '#09090B',   // shadcn dark background

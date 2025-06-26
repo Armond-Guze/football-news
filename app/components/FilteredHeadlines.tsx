@@ -40,17 +40,10 @@ export default function FilteredHeadlines({
             categorySlug: selectedCategory 
           });
         } else if (selectedTag) {
-          // Find the tag ID first
-          const tagData = await client.fetch(`*[_type == "tag" && title == $tagTitle][0]`, { 
+          // Use the corrected tag query with tagTitle parameter
+          data = await client.fetch(headlinesByTagQuery, { 
             tagTitle: selectedTag 
           });
-          if (tagData) {
-            data = await client.fetch(headlinesByTagQuery, { 
-              tagId: tagData._id 
-            });
-          } else {
-            data = [];
-          }
         } else {
           data = await client.fetch(headlineQuery);
         }
@@ -234,7 +227,10 @@ export default function FilteredHeadlines({
                   
                   {headline.tags && headline.tags.length > 0 && (
                     <div className="flex flex-wrap gap-1 mt-3">
-                      {headline.tags.slice(0, 3).map((tag, index) => (
+                      {headline.tags
+                        .filter((tag) => tag && tag.title) // Filter out null/undefined tags
+                        .slice(0, 3)
+                        .map((tag, index) => (
                         <button
                           key={index}
                           onClick={(e) => {

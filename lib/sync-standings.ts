@@ -1,4 +1,4 @@
-import { client } from '@sanity/lib/client';
+import { client } from '@/sanity/lib/client';
 import { fetchNFLStandingsWithFallback, ProcessedTeamData } from './nfl-api';
 
 // Create a client with write permissions for syncing
