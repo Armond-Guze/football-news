@@ -3,10 +3,7 @@
 import { visionTool } from '@sanity/vision'
 import { defineConfig } from 'sanity'
 import { deskTool } from 'sanity/desk'
-import { dashboardTool } from '@sanity/dashboard'
 import { schemaTypes } from './sanity/schemaTypes'
-import powerRanking from './sanity/schemaTypes/powerRanking'
-
 
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
 import { apiVersion, dataset, projectId } from './sanity/env'
@@ -21,7 +18,6 @@ export default defineConfig({
     types: schemaTypes,
   },
   plugins: [
-    dashboardTool(),
     deskTool({ structure }),
     visionTool({ defaultApiVersion: apiVersion }),
   ],
