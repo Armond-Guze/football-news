@@ -1,9 +1,19 @@
-import { headlineQuery } from "./lib/queries";
 import powerRanking from "./schemaTypes/powerRanking";
-import headlineType from "./schemaTypes/headlineType"; // ✅ This was missing!
+import headlineType from "./schemaTypes/headlineType";
+import tagType from "./schemaTypes/tagType";
+import { authorType } from "./schemaTypes/authorType";
+import { categoryType } from "./schemaTypes/categoryType";
+import { postType } from "./schemaTypes/postType";
+import { standingsType } from "./schemaTypes/standingsType";
+import { blockContentType } from "./schemaTypes/blockContentType";
 
 export const schemaTypes = [
   powerRanking,
   headlineType,
-  // add other schemas here as needed
+  tagType,
+  authorType,
+  categoryType,
+  postType,
+  standingsType,
+  blockContentType
 ];

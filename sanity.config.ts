@@ -21,9 +21,7 @@ export default defineConfig({
     types: schemaTypes,
   },
   plugins: [
-    dashboardTool({
-      widgets: []
-    }),
+    dashboardTool(),
     deskTool({ structure }),
     visionTool({ defaultApiVersion: apiVersion }),
   ],

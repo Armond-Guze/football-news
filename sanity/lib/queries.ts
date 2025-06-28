@@ -1,5 +1,5 @@
 export const headlineQuery = `
-  *[_type == "headline"] | order(priority asc, _createdAt desc) {
+  *[_type == "headline" && published == true] | order(priority asc, _createdAt desc) {
     _id,
     title,
     slug,
@@ -20,7 +20,7 @@ export const headlineQuery = `
 
 // Detailed headline query for individual articles
 export const headlineDetailQuery = `
-  *[_type == "headline" && slug.current == $slug][0] {
+  *[_type == "headline" && slug.current == $slug && published == true][0] {
     _id,
     title,
     slug,
@@ -59,7 +59,7 @@ export const headlineDetailQuery = `
 
 // Query for related articles based on category and tags
 export const relatedHeadlinesQuery = `
-  *[_type == "headline" && _id != $currentId && 
+  *[_type == "headline" && published == true && _id != $currentId && 
     (category._ref == $categoryId || count((tags[]._ref)[@ in $tagIds]) > 0)] 
   | order(priority asc, _createdAt desc)[0...6] {
     _id,
@@ -99,7 +99,7 @@ export const tagsQuery = `
     slug,
     description,
     trending,
-    "articleCount": count(*[_type == "headline" && tags match "*" + ^.title + "*"])
+    "articleCount": count(*[_type == "headline" && published == true && tags match "*" + ^.title + "*"])
   }
 `;
 
@@ -108,13 +108,13 @@ export const trendingTagsQuery = `
   *[_type == "tag" && trending == true] | order(title asc) {
     title,
     slug,
-    "articleCount": count(*[_type == "headline" && tags match "*" + ^.title + "*"])
+    "articleCount": count(*[_type == "headline" && published == true && tags match "*" + ^.title + "*"])
   }
 `;
 
 // Headlines by category - fixed to work without requiring category references
 export const headlinesByCategoryQuery = `
-  *[_type == "headline" && category->slug.current == $categorySlug] 
+  *[_type == "headline" && published == true && category->slug.current == $categorySlug] 
   | order(priority asc, _createdAt desc) {
     _id,
     title,
@@ -139,7 +139,7 @@ export const headlinesByCategoryQuery = `
 
 // Headlines by tag - fixed to work with string tags
 export const headlinesByTagQuery = `
-  *[_type == "headline" && tags match "*" + $tagTitle + "*"] 
+  *[_type == "headline" && published == true && tags match "*" + $tagTitle + "*"] 
   | order(priority asc, _createdAt desc) {
     _id,
     title,
