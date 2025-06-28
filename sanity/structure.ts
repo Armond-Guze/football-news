@@ -3,7 +3,7 @@ import type {StructureResolver} from 'sanity/desk'
 // https://www.sanity.io/docs/structure-builder-cheat-sheet
 export const structure: StructureResolver = (S) =>
   S.list()
-    .title('The Game Snap CMS')
+    .title('The Snap CMS')
     .items([
       S.documentTypeListItem('headline').title('Headlines'),
       S.documentTypeListItem('powerRanking').title('Power Rankings'),
